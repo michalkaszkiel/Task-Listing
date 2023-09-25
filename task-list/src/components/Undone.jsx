@@ -27,6 +27,7 @@ export const Undone = ({
             <i
                 className="fa-solid fa-clipboard-check"
                 onClick={handleShowCompleted}
+                style={{ fontSize: "1vw" }}
             >
                 show completed
             </i>
