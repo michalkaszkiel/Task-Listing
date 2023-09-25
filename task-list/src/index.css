@@ -84,9 +84,119 @@ div.Landing-text p::after {
 .List-Main {
     width: 100vw;
     height: 100vh;
-    background-color: #70cdff;
+    background-image: url(./images/background-listing.jpeg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Sub-List-Main {
+    width: 80%;
+    height: 80%;
+    display: grid;
+    grid-template-columns: repeat(10, 10%);
+    grid-template-rows: repeat(10, 10%);
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.MainOff {
+    width: 80%;
+    height: 80%;
+    display: grid;
+    grid-template-columns: repeat(10, 10%);
+    grid-template-rows: repeat(10, 10%);
+    align-items: center;
+}
+.Form-Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-area: 1/4/3/8;
+}
+.Form-Container > h1 {
+    margin-bottom: 2vh;
+}
+.Form-Container > form > input {
+    width: 20vw;
+    height: 5vh;
+}
+.Done-Container {
+    grid-area: 3/7/10/10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(9, 231, 9, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(50%);
+    -webkit-backdrop-filter: blur(50%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 2vh;
+}
+.Undone-Container {
+    grid-area: 3/4/10/8;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(90%);
+    -webkit-backdrop-filter: blur(90%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 2vh;
+}
+.Both-Containers {
+    grid-area: 3/2/10/5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2vh;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(50%);
+    -webkit-backdrop-filter: blur(50%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+.Item-Container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 2vh;
+    padding-top: 3vh;
+}
+.Done-Icons {
+    display: flex;
+    flex-direction: row;
+}
+.Done-Icons > i {
+    width: 2vw;
+    height: 2vh;
+    cursor: pointer;
+
+    transition: 300ms ease-in-out;
+}
 /* Visuals*/
 .fade {
     display: flex;
@@ -117,4 +227,18 @@ div.Landing-text p::after {
     100% {
         width: 45%;
     }
+}
+.btn {
+    width: 8vw;
+    height: 5vh;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid #000000;
+    outline: none;
+    transition: 300ms ease-in-out;
+}
+
+.btn:hover {
+    transition: 500ms ease-in-out;
+    background: #fae9ad;
 }
