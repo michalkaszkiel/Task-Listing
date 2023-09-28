@@ -7,11 +7,34 @@ export const List = () => {
     const [items, setItems] = useState([]);
     const [inputName, setInputName] = useState("");
     const [showCompleted, setShowCompleted] = useState(false);
+    const [selectedDate, setSelectedDate] = useState(new Date().toDateString());
+
+    // const handleRatingChange = (id, newPriority) => {
+    //     setItems((prevItems) =>
+    //         prevItems.map((item) =>
+    //             item.id === id ? { ...item, priority: newPriority } : item
+    //         )
+    //     );
+    //     // console.log(items);
+    // };
+    const handleDateChange = (date) => {
+        const formattedDate = date.toDateString();
+        setSelectedDate(formattedDate);
+        console.log(formattedDate);
+    };
+    // const unformattedDate = items.date you have to identify item by id and map it
+    // const today = new Date();
+    // const chosen = new Date(unformattedDate);
+    // const timeDifference = chosen - today;
+    // const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
 
     const handleAddTask = () => {
         const newTask = {
             id: items.length,
             name: inputName,
+            date: selectedDate,
+            // timeLeft: timeDifference,
+            priority: null,
             completed: false,
         };
         setItems([...items, newTask]);
@@ -50,13 +73,20 @@ export const List = () => {
     return (
         <div className="List-Main">
             <div className={handleBackground}>
-                <Form handleSubmit={handleSubmit} setInputName={setInputName} />
+                <Form
+                    handleSubmit={handleSubmit}
+                    setInputName={setInputName}
+                    selectedDate={selectedDate}
+                    setSelectedDate={selectedDate}
+                    handleDateChange={handleDateChange}
+                />
                 {showCompleted && (
                     <Done
                         done={done}
                         handleUndone={handleUndoneItems}
                         handleDone={handleDoneItems}
                         handleDelete={handleDelete}
+                        selectedDate={selectedDate}
                     />
                 )}
                 <Undone
@@ -65,6 +95,7 @@ export const List = () => {
                     handleDone={handleDoneItems}
                     handleShowCompleted={handleShowCompleted}
                     showCompleted={showCompleted}
+                    selectedDate={selectedDate}
                 />
             </div>
         </div>

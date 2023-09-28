@@ -7,10 +7,12 @@ export const Undone = ({
     handleUndone,
     handleShowCompleted,
     showCompleted,
+
+    // unformattedDate,
 }) => {
     const showBothLists = showCompleted
         ? "Both-Containers"
-        : "Undone-Container";
+        : "Undone-Container pulse-on";
 
     if (!toDo) {
         return null; // or a loading indicator
@@ -24,6 +26,7 @@ export const Undone = ({
                         <h1 style={{ borderBottom: "solid 1px black" }}>
                             Tasks
                         </h1>
+
                         {toDo.map((item) => (
                             <Item
                                 item={item}
@@ -32,6 +35,7 @@ export const Undone = ({
                                 handleUndoneItems={handleUndone}
                             />
                         ))}
+
                         <i
                             className="fa-solid fa-clipboard-check"
                             onClick={handleShowCompleted}

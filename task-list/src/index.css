@@ -129,7 +129,7 @@ div.Landing-text p::after {
     height: 5vh;
 }
 .Done-Container {
-    grid-area: 3/7/10/10;
+    grid-area: 3/7/10/11;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -158,9 +158,11 @@ div.Landing-text p::after {
     -webkit-backdrop-filter: blur(90%);
     border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 2vh;
+    margin-top: 2vh;
 }
+
 .Both-Containers {
-    grid-area: 3/2/10/5;
+    grid-area: 3/1/10/5;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -182,7 +184,7 @@ div.Landing-text p::after {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: self-start;
     font-size: 2vh;
     padding-top: 3vh;
 }
@@ -196,6 +198,8 @@ div.Landing-text p::after {
     cursor: pointer;
 
     transition: 300ms ease-in-out;
+}
+.Item-Name {
 }
 /* Visuals*/
 .fade {
@@ -241,4 +245,43 @@ div.Landing-text p::after {
 .btn:hover {
     transition: 500ms ease-in-out;
     background: #fae9ad;
+}
+.pulse-on {
+    transition: transform 0.3s;
+}
+.pulse-on:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+.Calendar {
+    position: relative;
+}
+.fa-calendar-day {
+    margin-right: 0.2rem;
+    font-size: 2.5vw;
+    cursor: pointer;
+    transition: 300ms ease-in-out;
+}
+.calendar-container {
+    position: absolute;
+    max-width: 300px;
+    margin-left: -345px;
+    padding: 20px;
+    background-color: #dadada;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    font-size: 1.3vh;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.selected-date {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 1.5vh;
+    color: #333;
+}
+form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import Rating from "react-rating";
 
 export const Item = ({
     item,
@@ -8,7 +9,24 @@ export const Item = ({
 }) => {
     return (
         <div className="Item-Container">
-            <p>{item.name}</p>
+            <div className="Rating-Date">
+                <Rating
+                    emptySymbol={
+                        <i
+                            className="fa-regular fa-star"
+                            style={{ fontSize: "small" }}
+                        ></i>
+                    }
+                    fullSymbol={
+                        <i
+                            className="fa-solid fa-star"
+                            style={{ fontSize: "small" }}
+                        ></i>
+                    }
+                />
+                <p className="Item-Date">{item.date}</p>
+            </div>
+            <p className="Item-Name">{item.name}</p>
             {!item.completed && (
                 <i
                     className="fa-solid fa-circle-check"

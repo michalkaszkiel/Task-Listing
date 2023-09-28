@@ -1,10 +1,21 @@
 import { useState, useEffect } from "react";
 import { Fade } from "react-reveal";
-export const Form = ({ handleSubmit, setInputName }) => {
+import MyCalendar from "./MyCalendar";
+export const Form = ({
+    handleSubmit,
+    setInputName,
+    selectedDate,
+    setSelectedDate,
+    handleDateChange,
+}) => {
     const handleChange = (e) => {
         setInputName(e.target.value);
     };
     const [showSecondHeader, setShowSecondHeader] = useState(false);
+    const [showCalendar, setShowCalendar] = useState(false);
+    const handleShowCalendar = () => {
+        setShowCalendar(!showCalendar);
+    };
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -25,7 +36,23 @@ export const Form = ({ handleSubmit, setInputName }) => {
                     <h1>Let's plan something...</h1>
                 </Fade>
             )}
+
             <form onSubmit={handleSubmit}>
+                <i
+                    class="fa-solid fa-calendar-day"
+                    onClick={handleShowCalendar}
+                ></i>
+
+                <div className="Calendar">
+                    {showCalendar && (
+                        <MyCalendar
+                            selectedDate={selectedDate}
+                            setSelectedDate={setSelectedDate}
+                            handleDateChange={handleDateChange}
+                        />
+                    )}
+                </div>
+
                 <input
                     type="text"
                     placeholder="Add a task"
