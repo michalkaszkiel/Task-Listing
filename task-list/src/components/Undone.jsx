@@ -7,8 +7,8 @@ export const Undone = ({
     handleUndone,
     handleShowCompleted,
     showCompleted,
-
-    // unformattedDate,
+    handleUpdateRating,
+    handleTimeLeft,
 }) => {
     const showBothLists = showCompleted
         ? "Both-Containers"
@@ -23,9 +23,7 @@ export const Undone = ({
             {showCompleted ? (
                 <Fade right>
                     <div className={showBothLists}>
-                        <h1 style={{ borderBottom: "solid 1px black" }}>
-                            Tasks
-                        </h1>
+                        <h1>Tasks</h1>
 
                         {toDo.map((item) => (
                             <Item
@@ -33,6 +31,8 @@ export const Undone = ({
                                 key={item.id}
                                 handleDoneItems={handleDone}
                                 handleUndoneItems={handleUndone}
+                                handleUpdateRating={handleUpdateRating}
+                                handleTimeLeft={handleTimeLeft}
                             />
                         ))}
 
@@ -47,13 +47,15 @@ export const Undone = ({
                 </Fade>
             ) : (
                 <div className={showBothLists}>
-                    <h1 style={{ borderBottom: "solid 1px black" }}>Tasks</h1>
+                    <h1>Tasks</h1>
                     {toDo.map((item) => (
                         <Item
                             item={item}
                             key={item.id}
                             handleDoneItems={handleDone}
                             handleUndoneItems={handleUndone}
+                            handleUpdateRating={handleUpdateRating}
+                            handleTimeLeft={handleTimeLeft}
                         />
                     ))}
                     <i

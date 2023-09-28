@@ -1,7 +1,14 @@
 import { Item } from "./Item.jsx";
 import { Fade } from "react-reveal";
 
-export const Done = ({ done, handleDone, handleUndone, handleDelete }) => {
+export const Done = ({
+    done,
+    handleDone,
+    handleUndone,
+    handleDelete,
+    handleUpdateRating,
+    handleTimeLeft,
+}) => {
     // Check if 'done' is defined and is an array
     if (!done) {
         return null; // or a loading indicator
@@ -23,6 +30,8 @@ export const Done = ({ done, handleDone, handleUndone, handleDelete }) => {
                             handleDoneItems={handleDone}
                             handleUndoneItems={handleUndone}
                             handleDelete={handleDelete}
+                            handleUpdateRating={handleUpdateRating}
+                            handleTimeLeft={handleTimeLeft}
                         />
                     ))}
                 </div>

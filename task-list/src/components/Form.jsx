@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Fade } from "react-reveal";
 import MyCalendar from "./MyCalendar";
 export const Form = ({
@@ -16,6 +16,23 @@ export const Form = ({
     const handleShowCalendar = () => {
         setShowCalendar(!showCalendar);
     };
+    const calendarRef = useRef(null);
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                calendarRef.current &&
+                !calendarRef.current.contains(event.target)
+            ) {
+                setShowCalendar(false);
+            }
+        };
+
+        document.addEventListener("click", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("click", handleClickOutside);
+        };
+    }, []);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -41,6 +58,7 @@ export const Form = ({
                 <i
                     class="fa-solid fa-calendar-day"
                     onClick={handleShowCalendar}
+                    ref={calendarRef}
                 ></i>
 
                 <div className="Calendar">

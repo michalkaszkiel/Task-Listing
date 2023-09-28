@@ -2,41 +2,44 @@ import { useState } from "react";
 import { Form } from "./Form";
 import { Done } from "./Done";
 import { Undone } from "./Undone";
-
+import React from "react";
 export const List = () => {
     const [items, setItems] = useState([]);
     const [inputName, setInputName] = useState("");
     const [showCompleted, setShowCompleted] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date().toDateString());
 
-    // const handleRatingChange = (id, newPriority) => {
-    //     setItems((prevItems) =>
-    //         prevItems.map((item) =>
-    //             item.id === id ? { ...item, priority: newPriority } : item
-    //         )
-    //     );
-    //     // console.log(items);
-    // };
     const handleDateChange = (date) => {
         const formattedDate = date.toDateString();
         setSelectedDate(formattedDate);
-        console.log(formattedDate);
     };
-    // const unformattedDate = items.date you have to identify item by id and map it
-    // const today = new Date();
-    // const chosen = new Date(unformattedDate);
-    // const timeDifference = chosen - today;
-    // const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+    const handleUpdateRating = (itemId, newRating) => {
+        const updatedItems = items.map((item) =>
+            item.id === itemId ? { ...item, priority: newRating } : item
+        );
+        setItems(updatedItems);
+    };
+    const handleTimeLeft = (itemId, newDate) => {
+        const today = new Date();
+        const timeDifference = newDate - today;
+        const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+
+        const updatedItems = items.map((item) =>
+            item.id === itemId ? { ...item, deadLine: daysRemaining } : item
+        );
+        setItems(updatedItems);
+    };
 
     const handleAddTask = () => {
         const newTask = {
             id: items.length,
             name: inputName,
             date: selectedDate,
-            // timeLeft: timeDifference,
+            deadLine: 0,
             priority: null,
             completed: false,
         };
+        handleTimeLeft(newTask.id, new Date(selectedDate));
         setItems([...items, newTask]);
     };
 
@@ -44,7 +47,7 @@ export const List = () => {
         e.preventDefault();
         if (!inputName) return;
         handleAddTask(inputName);
-        setInputName(""); // Clear the input
+        setInputName("");
     };
 
     const handleUndoneItems = (id) => {
@@ -66,8 +69,7 @@ export const List = () => {
         setShowCompleted(!showCompleted);
     };
     const handleDelete = (id) => {
-        const updated = items.filter((item) => item.id !== id);
-        setItems(updated);
+        setItems((prevItems) => prevItems.filter((item) => item.id !== id));
     };
     const handleBackground = showCompleted ? "MainOff" : "Sub-List-Main";
     return (
@@ -87,6 +89,8 @@ export const List = () => {
                         handleDone={handleDoneItems}
                         handleDelete={handleDelete}
                         selectedDate={selectedDate}
+                        handleUpdateRating={handleUpdateRating}
+                        handleTimeLeft={handleTimeLeft}
                     />
                 )}
                 <Undone
@@ -96,10 +100,10 @@ export const List = () => {
                     handleShowCompleted={handleShowCompleted}
                     showCompleted={showCompleted}
                     selectedDate={selectedDate}
+                    handleUpdateRating={handleUpdateRating}
+                    handleTimeLeft={handleTimeLeft}
                 />
             </div>
         </div>
     );
 };
-
-// Rest of your code for Undone and Item components remains the same.

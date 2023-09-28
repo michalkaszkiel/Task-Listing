@@ -128,6 +128,7 @@ div.Landing-text p::after {
     width: 20vw;
     height: 5vh;
 }
+
 .Done-Container {
     grid-area: 3/7/10/11;
     display: flex;
@@ -200,6 +201,14 @@ div.Landing-text p::after {
     transition: 300ms ease-in-out;
 }
 .Item-Name {
+    font-size: large;
+}
+.Item-Date {
+    font-size: medium;
+}
+
+.Item-DeadLine {
+    font-size: smaller;
 }
 /* Visuals*/
 .fade {
@@ -258,7 +267,7 @@ div.Landing-text p::after {
 }
 .fa-calendar-day {
     margin-right: 0.2rem;
-    font-size: 2.5vw;
+    font-size: 5vh;
     cursor: pointer;
     transition: 300ms ease-in-out;
 }
