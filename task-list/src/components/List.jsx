@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 import { Form } from "./Form";
 import { Done } from "./Done";
 import { Undone } from "./Undone";
@@ -32,7 +33,6 @@ export const List = () => {
 
     const handleAddTask = () => {
         const newTask = {
-            id: items.length,
             name: inputName,
             date: selectedDate,
             deadLine: 0,
@@ -43,11 +43,25 @@ export const List = () => {
         setItems([...items, newTask]);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (!inputName) return;
         handleAddTask(inputName);
         setInputName("");
+        // try {
+        //     await axios.post(
+        //         "http://localhost:3001/api/task-list/create-task",
+        //         {
+        //             name: inputName,
+        //             date: selectedDate,
+        //             deadLine: 0,
+        //             priority: null,
+        //             completed: false,
+        //         }
+        //     );
+        // } catch (error) {
+        //     console.log("Unable to send POST to /notices/new");
+        // }
     };
 
     const handleUndoneItems = (id) => {
