@@ -14,12 +14,12 @@ export const Item = React.memo(
 
         useEffect(() => {
             const unformattedDate = new Date(item.date);
-            handleTimeLeft(item.id, unformattedDate);
-        }, item.date);
+            handleTimeLeft(item._id, unformattedDate);
+        }, [item.date]);
 
         const handleRatingChange = (newRating) => {
             setRating(newRating);
-            handleUpdateRating(item.id, newRating);
+            handleUpdateRating(item._id, newRating);
         };
 
         return (
@@ -41,26 +41,27 @@ export const Item = React.memo(
                             ></i>
                         }
                     />
-                    <p className="Item-Date">{item.date}</p>
+                    <p className="Item-Date">
+                        {new Date(item.date).toLocaleDateString()}
+                    </p>
                     <p className="Item-DeadLine">{`${item.deadLine} days left`}</p>{" "}
-                    {/* Add days left */}
                 </div>
                 <p className="Item-Name">{item.name}</p>
                 {!item.completed && (
                     <i
                         className="fa-solid fa-circle-check"
-                        onClick={() => handleDoneItems(item.id)}
+                        onClick={() => handleDoneItems(item._id)}
                     ></i>
                 )}
                 {item.completed && (
                     <div className="Done-Icons">
                         <i
                             className="fa-solid fa-clock-rotate-left"
-                            onClick={() => handleUndoneItems(item.id)}
+                            onClick={() => handleUndoneItems(item._id)}
                         ></i>
                         <i
                             className="fa-regular fa-calendar-xmark"
-                            onClick={() => handleDelete(item.id)}
+                            onClick={() => handleDelete(item._id)}
                         ></i>
                     </div>
                 )}

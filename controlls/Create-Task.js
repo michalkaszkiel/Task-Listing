@@ -1,5 +1,6 @@
 import Task from "../models/tasks.js";
 import { StatusCodes } from "http-status-codes";
+
 export const CreateTask = async (req, res) => {
     const { name, date, deadLine, priority, completed } = req.body;
     try {

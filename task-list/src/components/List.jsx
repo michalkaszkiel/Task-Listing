@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Form } from "./Form";
 import { Done } from "./Done";
@@ -9,81 +9,107 @@ export const List = () => {
     const [inputName, setInputName] = useState("");
     const [showCompleted, setShowCompleted] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date().toDateString());
+    const toDo = items.filter((item) => !item.completed);
+    const done = items.filter((item) => item.completed);
+    useEffect(() => {
+        getItems(); // Fetch items whenever showCompleted changes
+    }, [showCompleted, items]);
 
-    const handleDateChange = (date) => {
-        const formattedDate = date.toDateString();
-        setSelectedDate(formattedDate);
-    };
-    const handleUpdateRating = (itemId, newRating) => {
-        const updatedItems = items.map((item) =>
-            item.id === itemId ? { ...item, priority: newRating } : item
-        );
-        setItems(updatedItems);
-    };
-    const handleTimeLeft = (itemId, newDate) => {
-        const today = new Date();
-        const timeDifference = newDate - today;
-        const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
-
-        const updatedItems = items.map((item) =>
-            item.id === itemId ? { ...item, deadLine: daysRemaining } : item
-        );
-        setItems(updatedItems);
-    };
-
-    const handleAddTask = () => {
-        const newTask = {
-            name: inputName,
-            date: selectedDate,
-            deadLine: 0,
-            priority: null,
-            completed: false,
-        };
-        handleTimeLeft(newTask.id, new Date(selectedDate));
-        setItems([...items, newTask]);
+    const getItems = async () => {
+        try {
+            const response = await axios.get(
+                "http://localhost:3001/api/task-list/get-items"
+            );
+            const receivedItems = Array.isArray(response.data)
+                ? response.data // If the server directly returns an array
+                : response.data.items; // If the server returns an object with an "items" property
+            setItems(receivedItems);
+        } catch (error) {
+            console.log("Unable to get data from the server");
+        }
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!inputName) return;
-        handleAddTask(inputName);
-        setInputName("");
-        // try {
-        //     await axios.post(
-        //         "http://localhost:3001/api/task-list/create-task",
-        //         {
-        //             name: inputName,
-        //             date: selectedDate,
-        //             deadLine: 0,
-        //             priority: null,
-        //             completed: false,
-        //         }
-        //     );
-        // } catch (error) {
-        //     console.log("Unable to send POST to /notices/new");
-        // }
+
+        try {
+            await axios.post(
+                "http://localhost:3001/api/task-list/create-task",
+                {
+                    name: inputName,
+                    date: selectedDate,
+                    deadLine: 0,
+                    priority: null,
+                    completed: false,
+                }
+            );
+        } catch (error) {
+            console.log("Unable to send data to the server");
+        }
+    };
+    const handleDateChange = (date) => {
+        const formattedDate = date.toLocaleDateString();
+        setSelectedDate(formattedDate);
     };
 
-    const handleUndoneItems = (id) => {
-        setItems((items) =>
-            items.map((el) => (el.id === id ? { ...el, completed: false } : el))
-        );
+    const handleTimeLeft = (itemId, newDate) => {
+        const today = new Date();
+        const timeDifference = newDate - today;
+        const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
     };
 
-    const handleDoneItems = (id) => {
-        setItems((items) =>
-            items.map((el) => (el.id === id ? { ...el, completed: true } : el))
-        );
+    const handleUpdateRating = async (itemId, newRating) => {
+        try {
+            await axios.patch(
+                `http://localhost:3001/api/task-list/update-rating/${itemId}`,
+                {
+                    priority: newRating,
+                }
+            );
+            // After updating priority, fetch the updated list of items
+        } catch (error) {
+            console.log("Unable to send data to the server");
+        }
+    };
+    const handleUndoneItems = async (taskId) => {
+        try {
+            // Make a PATCH request to update the task's completed status
+            await axios.patch(
+                `http://localhost:3001/api/task-list/update-completed/${taskId}`,
+                {
+                    completed: false,
+                }
+            );
+        } catch (error) {
+            console.error("Unable to mark task as undone:", error);
+        }
     };
 
-    const toDo = items.filter((item) => !item.completed);
-    const done = items.filter((item) => item.completed);
+    const handleDoneItems = async (taskId) => {
+        try {
+            await axios.patch(
+                `http://localhost:3001/api/task-list/update-completed/${taskId}`,
+                {
+                    completed: true,
+                }
+            );
+        } catch (error) {
+            console.error("Unable to mark task as completed:", error);
+        }
+    };
 
     const handleShowCompleted = () => {
         setShowCompleted(!showCompleted);
     };
     const handleDelete = (id) => {
-        setItems((prevItems) => prevItems.filter((item) => item.id !== id));
+        try {
+            axios.delete(
+                `http://localhost:3001/api/task-list/delete-task/${id}`
+            );
+        } catch (error) {
+            console.log("Unable to delete data from the server");
+        }
     };
     const handleBackground = showCompleted ? "MainOff" : "Sub-List-Main";
     return (

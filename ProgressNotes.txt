@@ -1,5 +1,4 @@
-1.Pomyśl  o dodaniu priorytetów w postaci kolorów lub kropek 5 kropek najwyższe priority.
-2.Połącz liste z serverem lub zapisz listę w LocalStorage.
+
 3.Sformatuj style.
 4.Media Queries.
-5.
+5.Napraw overclick kalendarza

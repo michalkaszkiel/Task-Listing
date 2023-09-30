@@ -21,18 +21,19 @@ export const Form = ({
         const handleClickOutside = (event) => {
             if (
                 calendarRef.current &&
-                !calendarRef.current.contains(event.target)
+                !calendarRef.current.contains(event.target) &&
+                showCalendar // Check if the calendar is currently open
             ) {
                 setShowCalendar(false);
             }
         };
 
-        document.addEventListener("click", handleClickOutside);
+        document.addEventListener("mousedown", handleClickOutside);
 
         return () => {
-            document.removeEventListener("click", handleClickOutside);
+            document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, []);
+    }, [showCalendar]);
 
     useEffect(() => {
         const timer = setTimeout(() => {

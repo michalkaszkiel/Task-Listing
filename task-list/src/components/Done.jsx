@@ -26,7 +26,7 @@ export const Done = ({
                     {done.map((item) => (
                         <Item
                             item={item}
-                            key={item.id}
+                            key={item._id}
                             handleDoneItems={handleDone}
                             handleUndoneItems={handleUndone}
                             handleDelete={handleDelete}

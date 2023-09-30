@@ -280,7 +280,6 @@ div.Landing-text p::after {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     font-size: 1.3vh;
     border-radius: 5px;
-    z-index: 1;
 }
 
 .selected-date {
