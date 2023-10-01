@@ -4,11 +4,12 @@ import { Form } from "./Form";
 import { Done } from "./Done";
 import { Undone } from "./Undone";
 import React from "react";
+import { Footer } from "./Footer";
 export const List = () => {
     const [items, setItems] = useState([]);
     const [inputName, setInputName] = useState("");
     const [showCompleted, setShowCompleted] = useState(false);
-    const [selectedDate, setSelectedDate] = useState(new Date().toDateString());
+    const [selectedDate, setSelectedDate] = useState(new Date());
     const toDo = items.filter((item) => !item.completed);
     const done = items.filter((item) => item.completed);
     useEffect(() => {
@@ -39,7 +40,7 @@ export const List = () => {
                 {
                     name: inputName,
                     date: selectedDate,
-                    deadLine: 0,
+                    deadLine: calculateDaysRemaining(new Date(selectedDate)),
                     priority: null,
                     completed: false,
                 }
@@ -49,16 +50,16 @@ export const List = () => {
         }
     };
     const handleDateChange = (date) => {
-        const formattedDate = date.toLocaleDateString();
-        setSelectedDate(formattedDate);
+        setSelectedDate(date);
     };
 
-    const handleTimeLeft = (itemId, newDate) => {
+    const calculateDaysRemaining = (newDate) => {
         const today = new Date();
+        // Calculate the time difference in milliseconds
         const timeDifference = newDate - today;
-        const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+        // Convert milliseconds to days
+        return Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
     };
-
     const handleUpdateRating = async (itemId, newRating) => {
         try {
             await axios.patch(
@@ -130,7 +131,6 @@ export const List = () => {
                         handleDelete={handleDelete}
                         selectedDate={selectedDate}
                         handleUpdateRating={handleUpdateRating}
-                        handleTimeLeft={handleTimeLeft}
                     />
                 )}
                 <Undone
@@ -141,7 +141,6 @@ export const List = () => {
                     showCompleted={showCompleted}
                     selectedDate={selectedDate}
                     handleUpdateRating={handleUpdateRating}
-                    handleTimeLeft={handleTimeLeft}
                 />
             </div>
         </div>

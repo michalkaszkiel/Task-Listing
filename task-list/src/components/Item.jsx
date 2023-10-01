@@ -8,26 +8,20 @@ export const Item = React.memo(
         handleUndoneItems,
         handleDelete,
         handleUpdateRating,
-        handleTimeLeft,
     }) => {
-        const [rating, setRating] = useState(item.priority);
-
-        useEffect(() => {
-            const unformattedDate = new Date(item.date);
-            handleTimeLeft(item._id, unformattedDate);
-        }, [item.date]);
-
+        // const [rating, setRating] = useState(0);
         const handleRatingChange = (newRating) => {
-            setRating(newRating);
+            // setRating(newRating);
             handleUpdateRating(item._id, newRating);
+            console.log(item._id, newRating);
         };
 
         return (
             <div className="Item-Container">
                 <div className="Rating-Date">
                     <Rating
-                        initialRating={rating}
-                        onChange={handleRatingChange}
+                        initialRating={item.priority}
+                        onClick={handleRatingChange}
                         emptySymbol={
                             <i
                                 className="fa-regular fa-star"

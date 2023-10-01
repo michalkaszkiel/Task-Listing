@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Fade } from "react-reveal";
 import MyCalendar from "./MyCalendar";
+
 export const Form = ({
     handleSubmit,
     setInputName,
@@ -11,29 +12,15 @@ export const Form = ({
     const handleChange = (e) => {
         setInputName(e.target.value);
     };
+
     const [showSecondHeader, setShowSecondHeader] = useState(false);
     const [showCalendar, setShowCalendar] = useState(false);
+
     const handleShowCalendar = () => {
         setShowCalendar(!showCalendar);
     };
+
     const calendarRef = useRef(null);
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (
-                calendarRef.current &&
-                !calendarRef.current.contains(event.target) &&
-                showCalendar // Check if the calendar is currently open
-            ) {
-                setShowCalendar(false);
-            }
-        };
-
-        document.addEventListener("mousedown", handleClickOutside);
-
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, [showCalendar]);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -42,6 +29,7 @@ export const Form = ({
 
         return () => clearTimeout(timer);
     }, []);
+
     return (
         <div className="Form-Container">
             {!showSecondHeader && (

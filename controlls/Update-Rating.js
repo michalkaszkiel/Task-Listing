@@ -3,10 +3,11 @@ import Task from "../models/tasks.js";
 
 export const UpdateRating = async (req, res) => {
     const { id } = req.params;
+    const { priority } = req.body;
     try {
         const updatedTask = await Task.findByIdAndUpdate(
-            { _id: id },
-            { $set: { rating: req.body.rating } },
+            id,
+            { priority },
             { new: true }
         );
 

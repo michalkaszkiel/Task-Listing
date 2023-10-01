@@ -1,15 +1,17 @@
-import { useState } from "react";
+import React from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css"; // Import the default calendar styles
 
-const MyCalendar = ({ setSelectedDate, selectedDate, handleDateChange }) => {
+const MyCalendar = ({ selectedDate, handleDateChange }) => {
     return (
         <div className="calendar-container">
             <Calendar
-                onChange={handleDateChange}
-                value={new Date(selectedDate)}
+                onChange={(date) => {
+                    handleDateChange(date); // Call the date change handler
+                }}
+                value={selectedDate}
+                calendarType="US" // Use the US calendar type to allow both month and day selection
             />
-            <p className="selected-date">Selected Date: {selectedDate}</p>
         </div>
     );
 };

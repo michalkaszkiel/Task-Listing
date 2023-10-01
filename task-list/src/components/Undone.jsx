@@ -8,7 +8,6 @@ export const Undone = ({
     handleShowCompleted,
     showCompleted,
     handleUpdateRating,
-    handleTimeLeft,
 }) => {
     const showBothLists = showCompleted
         ? "Both-Containers"
@@ -32,7 +31,6 @@ export const Undone = ({
                                 handleDoneItems={handleDone}
                                 handleUndoneItems={handleUndone}
                                 handleUpdateRating={handleUpdateRating}
-                                handleTimeLeft={handleTimeLeft}
                             />
                         ))}
 
@@ -55,7 +53,6 @@ export const Undone = ({
                             handleDoneItems={handleDone}
                             handleUndoneItems={handleUndone}
                             handleUpdateRating={handleUpdateRating}
-                            handleTimeLeft={handleTimeLeft}
                         />
                     ))}
                     <i
