@@ -21,8 +21,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
 }
-.custom-fade {
-}
+
 div.Landing-text {
     display: flex;
     flex-direction: row;
@@ -32,7 +31,6 @@ div.Landing-text {
     height: 80%;
     grid-area: 2/4/5/8;
     padding: 1rem;
-    /* grid-area: 2/3/5/9; */
     background: rgba(255, 255, 255, 0.2);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -51,15 +49,12 @@ div.Landing-text {
     max-width: 13vw;
     max-height: 13vh;
 }
-
 .Landing-Page-Sub-Text {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* padding-left: 2.2rem; */
-    /* margin: 4vh; */
     padding: 2vh;
 }
 div.Landing-text h1 {
@@ -81,11 +76,11 @@ div.Landing-text p::after {
     background: #ffe14b;
     margin-top: 0.5rem;
     animation: slide 1.7s 800ms ease-in forwards;
-    /* clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%); */
 }
 .Link {
     text-decoration: none;
 }
+
 /* List */
 .List-Main {
     width: 100vw;
@@ -208,14 +203,14 @@ div.Landing-text p::after {
     transition: 300ms ease-in-out;
 }
 .Item-Name {
-    font-size: large;
+    font-size: 2vh;
 }
 .Item-Date {
-    font-size: medium;
+    font-size: 1.5vh;
 }
 
 .Item-DeadLine {
-    font-size: smaller;
+    font-size: 1.4vh;
 }
 .Footer-Landing {
     width: 100%;
@@ -234,7 +229,39 @@ div.Landing-text p::after {
     color: #000000;
     margin-left: 0.3rem;
 }
+.Calendar {
+    z-index: 1;
+    position: relative;
+}
+.fa-calendar-day {
+    margin-right: 0.2rem;
+    font-size: 5vh;
+    cursor: pointer;
+    transition: 300ms ease-in-out;
+}
+.calendar-container {
+    position: absolute;
+    max-width: 300px;
+    max-height: fit-content;
+    margin-left: -350px;
+    padding: 10px;
+    background-color: #dadada;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    font-size: 1.3vh;
+    border-radius: 5px;
+}
 
+.selected-date {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 1.5vh;
+    color: #333;
+}
+form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
 /* Visuals*/
 .fade {
     display: flex;
@@ -292,35 +319,318 @@ i {
     opacity: 1;
 }
 
-.Calendar {
-    z-index: 1;
-    position: relative;
+/* Media Queries */
+/* Tablets in portrait mode */
+@media (min-width: 768px) and (max-width: 1024px) and (max-height: 1366px) {
+    div.Landing-text {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        grid-area: 2/4/6/8;
+        padding: 1rem;
+    }
+    .Landing-Page-Image-Cont {
+        width: 100%;
+        height: 100%;
+    }
+    .Landing-Page-Image {
+        max-width: 20vw;
+        max-height: 20vh;
+    }
+    div.Landing-text h1 {
+        font-size: 3.5vw;
+        color: #000000;
+    }
+    div.Landing-text p {
+        font-size: 2.5vw;
+        padding-top: 2vh;
+    }
+    div.Landing-text p::after {
+        height: 0px;
+    }
+
+    /* List */
+    .List-Main {
+        width: 100vw;
+        height: 100vh;
+    }
+    .Sub-List-Main {
+        width: 80%;
+        height: 80%;
+    }
+    .MainOff {
+        width: 95%;
+        height: 95%;
+    }
+    .Form-Container {
+        grid-area: 1/4/3/8;
+    }
+    .Form-Container > h1 {
+        margin-bottom: 2vh;
+    }
+    .Form-Container > form > input {
+        width: 20vw;
+        height: 5vh;
+    }
+    .Done-Container {
+        grid-area: 7/1/11/11;
+        width: 100%;
+        height: 95%;
+        padding: 2vh;
+    }
+    .Undone-Container {
+        grid-area: 3/2/10/10;
+        width: 100%;
+        height: 100%;
+        padding: 2vh;
+        margin-top: 2vh;
+    }
+    .Both-Containers {
+        grid-area: 3/1/7/11;
+        padding: 2vh;
+        width: 100%;
+        height: 95%;
+    }
+    .calendar-container {
+        position: absolute;
+        max-width: 250px;
+        margin-left: -300px;
+    }
 }
-.fa-calendar-day {
-    margin-right: 0.2rem;
-    font-size: 5vh;
-    cursor: pointer;
-    transition: 300ms ease-in-out;
+/* Larger smartphones (landscape) */
+@media (max-width: 960px) and (max-height: 480px) {
+    div.Landing-text {
+        grid-area: 2/3/8/9;
+        padding: 1rem;
+    }
+    .Landing-Page-Image-Cont {
+        width: 100%;
+        height: 100%;
+    }
+    .Landing-Page-Image {
+        max-width: 28vw;
+        max-height: 28vh;
+    }
+    div.Landing-text h1 {
+        font-size: 3.5vw;
+        color: #000000;
+    }
+    div.Landing-text p {
+        font-size: 2vw;
+        padding-top: 2vh;
+    }
+    div.Landing-text p::after {
+        height: 0px;
+    }
+
+    /* List */
+    .List-Main {
+        width: 100vw;
+        height: 100vh;
+    }
+    .Sub-List-Main {
+        width: 90%; /* ch */
+        height: 90%; /* ch */
+    }
+    .MainOff {
+        width: 95%;
+        height: 95%;
+    }
+    /* ch */
+    .Form-Container {
+        grid-area: 1/2/3/10;
+    }
+    /* ch */
+    .Form-Container > h1 {
+        margin-bottom: 2vh;
+    }
+    .Form-Container > form > input {
+        width: 20vw;
+        height: 5vh;
+    }
+    .Done-Container {
+        grid-area: 3/7/11/11;
+        width: 100%;
+        height: 95%;
+        padding: 2vh;
+    }
+    /* ch */
+    .Undone-Container {
+        grid-area: 3/2/10/10;
+        width: 100%;
+        height: 100%;
+        padding: 2vh;
+        margin-top: 2vh;
+    }
+    .Both-Containers {
+        grid-area: 3/1/11/5;
+        padding: 2vh;
+        width: 100%;
+        height: 95%;
+    }
+    .calendar-container {
+        position: absolute;
+        max-width: 250px;
+        margin-left: -265px;
+        font-size: 1.3vh;
+        border-radius: 5px;
+    }
 }
-.calendar-container {
-    position: absolute;
-    max-width: 300px;
-    margin-left: -345px;
-    padding: 20px;
-    background-color: #dadada;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    font-size: 1.3vh;
-    border-radius: 5px;
+/* Larger smartphones (portrait) */
+@media (max-width: 480px) and (max-height: 960px) {
+    div.Landing-text {
+        grid-area: 2/3/7/9;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .Landing-Page-Image-Cont {
+        width: 100%;
+        height: 100%;
+    }
+    .Landing-Page-Image {
+        max-width: 28vw;
+        max-height: 28vh;
+    }
+    div.Landing-text h1 {
+        font-size: 5vw;
+        color: #000000;
+    }
+    div.Landing-text p {
+        font-size: 3.5vw;
+        padding-top: 2vh;
+    }
+    div.Landing-text p::after {
+        height: 0px;
+    }
+
+    /* List */
+    .List-Main {
+        width: 100vw;
+        height: 100vh;
+    }
+    .Sub-List-Main {
+        width: 95%;
+        height: 95%;
+    }
+    .MainOff {
+        width: 95%;
+        height: 95%;
+    }
+    .Form-Container {
+        grid-area: 1/4/3/8;
+    }
+    .Form-Container > h1 {
+        margin-bottom: 2vh;
+    }
+    .Form-Container > form > input {
+        width: 40vw;
+        height: 5vh;
+    }
+    .Done-Container {
+        grid-area: 7/1/11/11;
+        width: 100%;
+        height: 95%;
+        padding: 2vh;
+    }
+    .Undone-Container {
+        grid-area: 3/2/10/10;
+        width: 100%;
+        height: 100%;
+        padding: 2vh;
+        margin-top: 2vh;
+    }
+    .Both-Containers {
+        grid-area: 3/1/7/11;
+        padding: 2vh;
+        width: 100%;
+        height: 95%;
+    }
+    .calendar-container {
+        position: absolute;
+        max-width: 220px;
+        margin-left: -110px;
+        margin-top: 52px;
+    }
 }
 
-.selected-date {
-    margin-top: 10px;
-    text-align: center;
-    font-size: 1.5vh;
-    color: #333;
-}
-form {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+/* Medium-sized smartphones (portrait) */
+@media (max-width: 414px) and (max-height: 896px) {
+    div.Landing-text {
+        grid-area: 2/3/7/9;
+        padding: 1rem;
+    }
+    .Landing-Page-Image-Cont {
+        width: 100%;
+        height: 100%;
+    }
+    .Landing-Page-Image {
+        max-width: 28vw;
+        max-height: 28vh;
+    }
+    div.Landing-text h1 {
+        font-size: 5vw;
+        color: #000000;
+    }
+    div.Landing-text p {
+        font-size: 3.5vw;
+        padding-top: 2vh;
+    }
+    div.Landing-text p::after {
+        height: 0px;
+    }
+
+    /* List */
+    .List-Main {
+        width: 100vw;
+        height: 100vh;
+    }
+    .Sub-List-Main {
+        width: 95%;
+        height: 95%;
+    }
+    .MainOff {
+        width: 95%;
+        height: 95%;
+    }
+    .Form-Container {
+        grid-area: 1/4/3/8;
+        width: 100%;
+        height: 100%;
+    }
+    .Form-Container > h1 {
+        margin-bottom: 2vh;
+    }
+    .Form-Container > form > input {
+        width: 50vw;
+        height: 5vh;
+    }
+    .Done-Container {
+        grid-area: 7/1/11/11;
+        width: 100%;
+        height: 95%;
+        padding: 2vh;
+    }
+    .Undone-Container {
+        grid-area: 3/2/10/10;
+        width: 100%;
+        height: 100%;
+        padding: 2vh;
+        margin-top: 2vh;
+    }
+    .Both-Containers {
+        grid-area: 3/1/7/11;
+        padding: 2vh;
+        width: 100%;
+        height: 95%;
+    }
+    .calendar-container {
+        position: absolute;
+        max-width: 230px;
+        margin-left: -100px;
+        margin-top: 45px;
+    }
 }

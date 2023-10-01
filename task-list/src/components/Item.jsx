@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Rating from "react-rating";
 
 export const Item = React.memo(
@@ -9,9 +9,7 @@ export const Item = React.memo(
         handleDelete,
         handleUpdateRating,
     }) => {
-        // const [rating, setRating] = useState(0);
         const handleRatingChange = (newRating) => {
-            // setRating(newRating);
             handleUpdateRating(item._id, newRating);
             console.log(item._id, newRating);
         };

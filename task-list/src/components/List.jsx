@@ -4,7 +4,7 @@ import { Form } from "./Form";
 import { Done } from "./Done";
 import { Undone } from "./Undone";
 import React from "react";
-import { Footer } from "./Footer";
+
 export const List = () => {
     const [items, setItems] = useState([]);
     const [inputName, setInputName] = useState("");

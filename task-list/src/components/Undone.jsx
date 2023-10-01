@@ -33,7 +33,6 @@ export const Undone = ({
                                 handleUpdateRating={handleUpdateRating}
                             />
                         ))}
-
                         <i
                             className="fa-solid fa-clipboard-check"
                             onClick={handleShowCompleted}
