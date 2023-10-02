@@ -375,7 +375,7 @@ i {
         margin-bottom: 2vh;
     }
     .Form-Container > form > input {
-        width: 20vw;
+        width: 40vw;
         height: 5vh;
     }
     .Done-Container {
@@ -400,7 +400,8 @@ i {
     .calendar-container {
         position: absolute;
         max-width: 250px;
-        margin-left: -300px;
+        margin-left: -225px;
+        margin-top: 55px;
     }
 }
 /* Larger smartphones (landscape) */
