@@ -30,7 +30,7 @@ export const List = () => {
     const getItems = async () => {
         try {
             const response = await axios.get(
-                "http://localhost:3001/api/task-list/get-items"
+                "http://localhost:10000/api/task-list/get-items"
             );
             const receivedItems = Array.isArray(response.data)
                 ? response.data // If the server directly returns an array
@@ -47,7 +47,7 @@ export const List = () => {
 
         try {
             await axios.post(
-                "http://localhost:3001/api/task-list/create-task",
+                "http://localhost:10000/api/task-list/create-task",
                 {
                     name: inputName,
                     date: selectedDate,
@@ -74,7 +74,7 @@ export const List = () => {
     const handleUpdateRating = async (itemId, newRating) => {
         try {
             await axios.patch(
-                `http://localhost:3001/api/task-list/update-rating/${itemId}`,
+                `http://localhost:10000/api/task-list/update-rating/${itemId}`,
                 {
                     priority: newRating,
                 }
@@ -88,7 +88,7 @@ export const List = () => {
         try {
             // Make a PATCH request to update the task's completed status
             await axios.patch(
-                `http://localhost:3001/api/task-list/update-completed/${taskId}`,
+                `http://localhost:10000/api/task-list/update-completed/${taskId}`,
                 {
                     completed: false,
                 }
@@ -101,7 +101,7 @@ export const List = () => {
     const handleDoneItems = async (taskId) => {
         try {
             await axios.patch(
-                `http://localhost:3001/api/task-list/update-completed/${taskId}`,
+                `http://localhost:10000/api/task-list/update-completed/${taskId}`,
                 {
                     completed: true,
                 }
@@ -117,7 +117,7 @@ export const List = () => {
     const handleDelete = (id) => {
         try {
             axios.delete(
-                `http://localhost:3001/api/task-list/delete-task/${id}`
+                `http://localhost:10000/api/task-list/delete-task/${id}`
             );
         } catch (error) {
             console.log("Unable to delete data from the server");

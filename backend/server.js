@@ -8,7 +8,7 @@ dotenv.config();
 
 const app = express();
 // app.use(express.static(path.join(__dirname, "build")));
-app.set("port", process.env.PORT || 4000);
+const port = process.env.PORT || 10000;
 
 app.use(express.json());
 app.use(cors());
@@ -38,6 +38,6 @@ app.all("*", (req, res) => {
     res.send("Invalid path");
 });
 
-app.listen(app.get("port"), () => {
-    console.log("The server is listening 🐒 on port " + app.get("port"));
+app.listen(port, () => {
+    console.log(`The server is listening 🐒 on port ${port}`);
 });
