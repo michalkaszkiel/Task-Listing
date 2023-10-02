@@ -10,12 +10,23 @@ export const List = () => {
     const [inputName, setInputName] = useState("");
     const [showCompleted, setShowCompleted] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date());
+    const [perPage, setPerPage] = useState(5);
     const toDo = items.filter((item) => !item.completed);
     const done = items.filter((item) => item.completed);
     useEffect(() => {
         getItems(); // Fetch items whenever showCompleted changes
     }, [showCompleted, items]);
 
+    useEffect(() => {
+        // Check the screen width and set perPage accordingly
+        if (window.innerWidth <= 768) {
+            // Adjust perPage for smartphone resolutions
+            setPerPage(3); // Change this value to your desired limit for smartphones
+        } else {
+            // Default perPage value for larger screens
+            setPerPage(5); // Change this value to your default limit for larger screens
+        }
+    }, []);
     const getItems = async () => {
         try {
             const response = await axios.get(
@@ -131,6 +142,7 @@ export const List = () => {
                         handleDelete={handleDelete}
                         selectedDate={selectedDate}
                         handleUpdateRating={handleUpdateRating}
+                        perPage={perPage}
                     />
                 )}
                 <Undone
@@ -141,6 +153,7 @@ export const List = () => {
                     showCompleted={showCompleted}
                     selectedDate={selectedDate}
                     handleUpdateRating={handleUpdateRating}
+                    perPage={perPage}
                 />
             </div>
         </div>

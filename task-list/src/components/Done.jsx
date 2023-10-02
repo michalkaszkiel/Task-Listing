@@ -7,16 +7,22 @@ export const Done = ({
     handleUndone,
     handleDelete,
     handleUpdateRating,
+    perPage,
 }) => {
     // Check if 'done' is defined and is an array
     if (!done) {
         return null; // or a loading indicator
     }
-
+    const shouldApplyOverflowClass = done && done.length > perPage;
+    const doneClass = "Done-Container";
     return (
         <>
             <Fade left>
-                <div className="Done-Container">
+                <div
+                    className={`${doneClass} ${
+                        shouldApplyOverflowClass ? "overflow-auto" : ""
+                    }`}
+                >
                     {done.length >= 1 ? (
                         <h1>Completed Tasks</h1>
                     ) : (

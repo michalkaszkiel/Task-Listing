@@ -8,7 +8,9 @@ export const Undone = ({
     handleShowCompleted,
     showCompleted,
     handleUpdateRating,
+    perPage,
 }) => {
+    const shouldApplyOverflowClass = toDo && toDo.length > perPage;
     const showBothLists = showCompleted
         ? "Both-Containers"
         : "Undone-Container pulse-on";
@@ -21,7 +23,11 @@ export const Undone = ({
         <>
             {showCompleted ? (
                 <Fade right>
-                    <div className={showBothLists}>
+                    <div
+                        className={`${showBothLists} ${
+                            shouldApplyOverflowClass ? "overflow-auto" : ""
+                        }`}
+                    >
                         <h1>Tasks</h1>
 
                         {toDo.map((item) => (
@@ -43,7 +49,11 @@ export const Undone = ({
                     </div>
                 </Fade>
             ) : (
-                <div className={showBothLists}>
+                <div
+                    className={`${showBothLists} ${
+                        shouldApplyOverflowClass ? "overflow-auto" : ""
+                    }`}
+                >
                     <h1>Tasks</h1>
                     {toDo.map((item) => (
                         <Item

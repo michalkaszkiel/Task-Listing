@@ -179,6 +179,7 @@ div.Landing-text p::after {
     backdrop-filter: blur(50%);
     -webkit-backdrop-filter: blur(50%);
     border: 1px solid rgba(255, 255, 255, 0.3);
+    /* overflow: auto; */
 }
 
 .Item-Container {
@@ -199,7 +200,7 @@ div.Landing-text p::after {
     width: 2vw;
     height: 2vh;
     cursor: pointer;
-
+    padding: 0.5rem;
     transition: 300ms ease-in-out;
 }
 .Item-Name {
@@ -278,6 +279,9 @@ form {
 i {
     cursor: pointer;
     color: #000000;
+}
+.overflow-auto {
+    overflow: auto;
 }
 @keyframes fade {
     0% {

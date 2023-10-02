@@ -3,9 +3,11 @@ import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
 import router from "./routes/router.js";
+import path from "path";
 dotenv.config();
-const app = express();
 
+const app = express();
+// app.use(express.static(path.join(__dirname, "build")));
 app.set("port", process.env.PORT || 4000);
 
 app.use(express.json());
@@ -28,7 +30,9 @@ mongoose
             error
         );
     });
-
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 app.all("*", (req, res) => {
     res.status(500);
     res.send("Invalid path");
