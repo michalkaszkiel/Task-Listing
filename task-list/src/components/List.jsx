@@ -114,7 +114,7 @@ export const List = () => {
     const handleShowCompleted = () => {
         setShowCompleted(!showCompleted);
     };
-    const handleDelete = (id) => {
+    const handleDelete = async (id) => {
         try {
             axios.delete(
                 `https://task-list-5ygd.onrender.com/api/task-list/delete-task/${id}`
