@@ -470,6 +470,16 @@ input:checked + .Login-span::before {
     width: 12vw;
     border-radius: 12% 88% 67% 33% / 84% 29% 71% 16%;
 }
+.Register-Successful {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 40vh;
+    background-color: white;
+    border-radius: 12% 88% 67% 33% / 84% 29% 71% 16%;
+    font-size: larger;
+}
 /* Visuals*/
 .fade {
     display: flex;
@@ -1363,6 +1373,15 @@ i {
 
     .Register-Image {
         width: 50vw;
+        border-radius: 12% 88% 67% 33% / 84% 29% 71% 16%;
+    }
+    .Register-Successful {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 85vw;
+        height: 40vh;
+        background-color: white;
         border-radius: 12% 88% 67% 33% / 84% 29% 71% 16%;
     }
 }

@@ -1,5 +1,35 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+
 export const Login = () => {
+    const navigate = useNavigate();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    // const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const handleLogIn = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post(
+                "http://localhost:3001/api/task-list/login",
+                {
+                    email: email,
+                    password: password,
+                }
+            );
+
+            if (response.status === 200) {
+                // Login successful, navigate to List
+                navigate("/List");
+            } else {
+                // Handle other response statuses if needed
+                console.log("Login failed");
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <div className="Login">
             <div className="Login-Welcome-Container">
@@ -13,9 +43,10 @@ export const Login = () => {
                 </div>
             </div>
             <div className="Login-Container">
-                <form className="Login-Form">
+                <form className="Login-Form" onSubmit={handleLogIn}>
                     <h1 style={{ marginBottom: "1vh" }}>Log in</h1>
                     <input
+                        onChange={(e) => setEmail(e.target.value)}
                         className="Login-input"
                         type="email"
                         placeholder="E-mail"
@@ -24,6 +55,7 @@ export const Login = () => {
                         required
                     />
                     <input
+                        onChange={(e) => setPassword(e.target.value)}
                         type="password"
                         placeholder="Password"
                         required
