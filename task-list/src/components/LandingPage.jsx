@@ -20,7 +20,7 @@ export const LandingPage = () => {
                             <p>And never forget a thing.</p>
                         </div>
                         <div className="Landing-Page-Image-Cont">
-                            <Link to="/list">
+                            <Link to="/SignInUp">
                                 <img
                                     alt="list"
                                     src={listed}

@@ -1,4 +1,17 @@
+Schemas added
 
-3.Sformatuj style.
-4.Media Queries.
-5.Napraw overclick kalendarza
+User     userName: String,
+    password: String,
+    email: String,
+    tasks: [TaskSchema],
+
+
+Task    name: { type: String, required: true },
+    date: { type: Date, default: Date.now }, // Set the type to Date and default to Date.now
+    deadLine: { type: Number, default: 0 },
+    priority: { type: Number, default: 0 },
+    completed: { type: Boolean, default: false },
+
+
+    Login Page 
+    Change controllers and change frontend functions

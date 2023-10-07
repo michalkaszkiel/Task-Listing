@@ -266,6 +266,210 @@ form {
 .fa-clipboard-check {
     font-size: 1.5vh;
 }
+/*Sign-In-Up*/
+.Sign-In-Up-Conatiner {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #8cdfff;
+}
+.Sign-In-Up-Sub-Cont {
+    width: 80%;
+    height: 80%;
+    display: grid;
+    grid-template-columns: repeat(10, 10%);
+    grid-template-rows: repeat(10, 10%);
+    background-image: url(./images/loginpage.jpeg);
+    background-position: left center;
+    background-size: 36vw;
+    background-repeat: no-repeat;
+}
+
+.Sign-In-Up-Info {
+    margin-left: 3vw;
+    grid-area: 1/5/7/11;
+    line-height: 1.5;
+    width: 100%;
+    height: 100%;
+}
+.Sign-In-Up-Info > h1 {
+    font-size: 4vh;
+}
+.Sign-In-Up-Info > h2 {
+    font-size: 3vh;
+}
+.Sign-In-Up-Info > h3 {
+    font-size: 2vh;
+}
+.Sign-In-Up-Info > p {
+    font-size: 2vh;
+    margin-top: 0.6vh;
+}
+.Sign-In-Up-Controllers {
+    grid-area: 5/5/11/11;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-image: url(./images/people.jpeg);
+    background-position: center;
+    background-size: 100vh;
+    background-repeat: no-repeat;
+}
+.Sign-In-Up-Controllers-Login {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.Sign-In-Up-Controllers-Register {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+/*Login */
+.Login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #8cdfff;
+    border-radius: 30% 70% 32% 68% / 30% 30% 70% 70%;
+}
+
+.Login-Welcome-Container {
+    width: 700px;
+    height: 500px;
+    background-image: url(./images/PeopleWelcome2.jpeg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 30% 70% 32% 68% / 30% 30% 70% 70%;
+}
+
+.Login-Container {
+    width: 30vw;
+    height: 50vh;
+    background-image: url(./images/peopleLogin.png);
+    background-position: bottom center;
+    background-size: 12vw;
+    background-repeat: no-repeat;
+}
+.Login-Form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Login-input {
+    display: block;
+    width: 50%;
+    height: 40px;
+    margin: 5px 0;
+    padding: 5px;
+    border: none;
+    border-bottom: 1px solid #fae9ad;
+    font-size: 14px;
+    color: rgb(0, 0, 0);
+    margin-bottom: 2vh;
+}
+.Login-input::placeholder {
+    color: rgb(0, 0, 0);
+}
+.Login-input:focus {
+    outline: none;
+    box-shadow: 0 3px 5px 0px #fae9ad;
+}
+.Login-input:invalid {
+    /*invalid when..*/
+    border-color: red;
+    color: red;
+}
+
+.Login-label {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    color: rgb(112, 102, 102);
+}
+/*here input checkbox hides*/
+.Login-checkbox {
+    opacity: 0;
+}
+.Login-span {
+    display: inline-block;
+    height: 24px;
+    width: 54px;
+    background-color: bisque;
+    cursor: pointer;
+    border-radius: 15px;
+    padding: 2px;
+}
+.Login-span::before {
+    content: ""; /*empty content*/
+    height: 20px;
+    width: 20px;
+    background-color: rgb(127, 127, 63);
+    display: inline-block;
+    border-radius: 100%;
+    transition: 0.4s;
+}
+
+input:checked + .Login-span {
+    background-color: rgb(246, 198, 126);
+}
+input:checked + .Login-span::before {
+    transform: translateX(30px);
+}
+/*Register */
+.Register {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #8cdfff;
+    border-radius: 12% 88% 67% 33% / 84% 29% 71% 16%;
+}
+.Register-Container {
+    display: flex;
+    flex-direction: row;
+    width: 50vw;
+    height: 50vh;
+    background-color: white;
+    border-radius: 12% 88% 67% 33% / 84% 29% 71% 16%;
+}
+.Register-Form {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.Register-Text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 40vw;
+}
+.Register-Image {
+    width: 12vw;
+    border-radius: 12% 88% 67% 33% / 84% 29% 71% 16%;
+}
 /* Visuals*/
 .fade {
     display: flex;
@@ -318,6 +522,20 @@ i {
     transition: 500ms ease-in-out;
     background: #fae9ad;
 }
+.btn1 {
+    width: 8vw;
+    height: 5vh;
+    cursor: pointer;
+    background-color: #fae9ad;
+    border: 1px solid #000000;
+    outline: none;
+    transition: 300ms ease-in-out;
+}
+
+.btn1:hover {
+    transition: 500ms ease-in-out;
+    background: #ffffff;
+}
 .pulse-on {
     transition: transform 0.3s;
 }
@@ -327,8 +545,94 @@ i {
 }
 
 /* Media Queries */
+
+/* Tablets in landscape mode */
+@media (min-width: 1024px) and (max-width: 1280px) and (max-height: 800px) {
+    .Sign-In-Up-Conatiner {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #8cdfff;
+    }
+    .Sign-In-Up-Sub-Cont {
+        width: 80%;
+        height: 80%;
+        display: grid;
+        grid-template-columns: repeat(10, 10%);
+        grid-template-rows: repeat(10, 10%);
+        background-image: url(./images/loginpage.jpeg);
+        background-position: left center;
+        background-size: 36vw;
+        background-repeat: no-repeat;
+    }
+
+    .Sign-In-Up-Info {
+        margin-left: 3vw;
+        grid-area: 1/5/7/11;
+        line-height: 1.5;
+        width: 100%;
+        height: 100%;
+    }
+    .Sign-In-Up-Info > h1 {
+        font-size: 4vh;
+    }
+    .Sign-In-Up-Info > h2 {
+        font-size: 3vh;
+    }
+    .Sign-In-Up-Info > h3 {
+        font-size: 2vh;
+    }
+    .Sign-In-Up-Info > p {
+        font-size: 2vh;
+        margin-top: 0.6vh;
+    }
+    .Sign-In-Up-Controllers {
+        grid-area: 5/5/11/11;
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background-image: url(./images/people.jpeg);
+        background-position: center;
+        background-size: 100vh;
+        background-repeat: no-repeat;
+    }
+    .Sign-In-Up-Controllers-Login {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+    .Sign-In-Up-Controllers-Register {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+    .btn1 {
+        width: 8vw;
+        height: 5vh;
+        cursor: pointer;
+        background-color: #fae9ad;
+        border: 1px solid #000000;
+        outline: none;
+        transition: 300ms ease-in-out;
+    }
+
+    .btn1:hover {
+        transition: 500ms ease-in-out;
+        background: #ffffff;
+    }
+}
+
 /* Tablets in portrait mode */
-@media (min-width: 768px) and (max-width: 1024px) and (max-height: 1366px) {
+@media (min-width: 768px) and (max-width: 1023px) and (max-height: 1366px) {
     div.Landing-text {
         width: 100%;
         height: 100%;
@@ -409,7 +713,209 @@ i {
         margin-left: -225px;
         margin-top: 55px;
     }
+    /*Sign-In-Up*/
+    .Sign-In-Up-Conatiner {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #8cdfff;
+    }
+    .Sign-In-Up-Sub-Cont {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(10, 10%);
+        grid-template-rows: repeat(10, 10%);
+        background-image: url(./images/loginpage.jpeg);
+        background-position: left top;
+        background-size: 40vw;
+        background-repeat: no-repeat;
+    }
+
+    .Sign-In-Up-Info {
+        padding: 8vh;
+        grid-area: 3/1/7/11;
+        line-height: 1.5;
+        width: 100%;
+        height: 100%;
+    }
+    .Sign-In-Up-Info > h1 {
+        font-size: 3vh;
+    }
+    .Sign-In-Up-Info > h2 {
+        font-size: 2.5vh;
+    }
+    .Sign-In-Up-Info > h3 {
+        font-size: 2vh;
+    }
+    .Sign-In-Up-Info > p {
+        font-size: 1.6vh;
+        margin-top: 0.6vh;
+    }
+    .Sign-In-Up-Controllers {
+        grid-area: 7/1/11/11;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-image: url(./images/peopleSmaller.png);
+        background-position: center;
+        background-size: 40vh;
+    }
+    .Sign-In-Up-Controllers-Login {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+    .Sign-In-Up-Controllers-Register {
+        display: flex;
+        justify-content: center;
+
+        width: 100%;
+        height: 100%;
+    }
+    .btn1 {
+        width: 60vw;
+        height: 5vh;
+        cursor: pointer;
+        background-color: #fae9ad;
+        border: 1px solid #000000;
+        outline: none;
+        transition: 300ms ease-in-out;
+    }
+
+    .btn1:hover {
+        transition: 500ms ease-in-out;
+        background: #ffffff;
+    }
+    /*Login */
+    .Login {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100vw;
+        height: 100vh;
+        background-color: #8cdfff;
+        border: white 2px double;
+        border-radius: 0;
+    }
+
+    .Login-Container {
+        width: 100vw;
+        height: 40vh;
+        background-image: url(./images/peopleLogin.png);
+        background-position: center top 27vh;
+        background-size: 60vw;
+    }
+    .Login-Form {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .Login-input {
+        display: block;
+        width: 50%;
+        height: 40px;
+        margin: 5px 0;
+        padding: 5px;
+        border: none;
+        border-bottom: 1px solid #fae9ad;
+        font-size: 14px;
+        color: rgb(0, 0, 0);
+        margin-bottom: 2vh;
+    }
+    .Login-input::placeholder {
+        color: rgb(0, 0, 0);
+    }
+    .Login-input:focus {
+        outline: none;
+        box-shadow: 0 3px 5px 0px #fae9ad;
+    }
+    .Login-input:invalid {
+        /*invalid when..*/
+        border-color: red;
+        color: red;
+    }
+
+    .Login-label {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 5px;
+        color: rgb(112, 102, 102);
+    }
+    /*here input checkbox hides*/
+    .Login-checkbox {
+        opacity: 0;
+    }
+    .Login-span {
+        display: inline-block;
+        height: 24px;
+        width: 54px;
+        background-color: bisque;
+        cursor: pointer;
+        border-radius: 15px;
+        padding: 2px;
+    }
+    .Login-Section > button {
+        width: 40vw;
+    }
+
+    /*Register */
+    .Register {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        background-color: #8cdfff;
+        border-radius: 0;
+        border: 3px white double;
+    }
+    .Register-Container {
+        display: flex;
+        flex-direction: column-reverse;
+        width: 80vw;
+        height: 75vh;
+        background-color: white;
+        border-radius: 5%;
+        border: 3px #8cdfff double;
+    }
+    .Register-Form {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .Register-Text {
+        padding: 2vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    .Register-Text > p {
+        font-size: larger;
+    }
+    .Register-Image {
+        width: 50vw;
+        border-radius: 12% 88% 67% 33% / 84% 29% 71% 16%;
+    }
 }
+
 /* Larger smartphones (landscape) */
 @media (max-width: 960px) and (max-height: 480px) {
     div.Landing-text {
@@ -490,6 +996,132 @@ i {
         margin-left: -265px;
         font-size: 1.3vh;
         border-radius: 5px;
+    }
+    /*Sign-In-Up*/
+
+    .Sign-In-Up-Sub-Cont {
+        width: 80%;
+        height: 80%;
+        display: grid;
+        grid-template-columns: repeat(10, 10%);
+        grid-template-rows: repeat(10, 10%);
+        background-image: url(./images/loginpage.jpeg);
+        background-position: left center;
+        background-size: 36vw;
+        background-repeat: no-repeat;
+    }
+
+    .Sign-In-Up-Info {
+        padding: 0;
+        margin-left: 3vw;
+        grid-area: 1/5/7/11;
+        line-height: 1.5;
+    }
+    .Sign-In-Up-Info > h1 {
+        font-size: 4vh;
+    }
+    .Sign-In-Up-Info > h2 {
+        font-size: 3vh;
+    }
+    .Sign-In-Up-Info > h3 {
+        font-size: 2vh;
+    }
+    .Sign-In-Up-Info > p {
+        font-size: 2vh;
+        margin-top: 0.6vh;
+    }
+    .Sign-In-Up-Controllers {
+        grid-area: 5/5/11/11;
+        justify-content: space-evenly;
+        flex-direction: row;
+        background-image: url(./images/people.jpeg);
+        background-position: center;
+        background-size: 100vh;
+        background-repeat: no-repeat;
+    }
+
+    .btn1 {
+        width: 15vw;
+    }
+
+    /*Login */
+    .Login {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        width: 100vw;
+        height: 100vh;
+        background-color: #8cdfff;
+        border: white 2px double;
+        border-radius: 0;
+    }
+    .Login-Welcome-Container {
+        width: 1000px;
+        height: 400px;
+    }
+    .Login-Welcome-text {
+        padding-bottom: 10rem;
+    }
+
+    .Login-Container {
+        width: 100vw;
+        height: 40vh;
+        background-image: url(./images/peopleLogin.png);
+        background-position: bottom center;
+        background-size: 40vw;
+    }
+    .Login-Form {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .Login-Section > button {
+        width: 15vw;
+    }
+
+    /*Register */
+    .Register {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        background-color: #8cdfff;
+        border-radius: 12% 88% 67% 33% / 84% 29% 71% 16%;
+    }
+    .Register-Container {
+        display: flex;
+        flex-direction: row;
+        width: 80vw;
+        height: 80vh;
+        background-color: white;
+        border-radius: 12% 88% 67% 33% / 84% 29% 71% 16%;
+    }
+    .Register-Form {
+        width: 90%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .Register-Text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 40vw;
+    }
+    .Register-Text > p {
+        font-size: smaller;
+    }
+    .Register-Image {
+        width: 12vw;
+        border-radius: 12% 88% 67% 33% / 84% 29% 71% 16%;
     }
 }
 /* Larger smartphones (portrait) */
@@ -572,6 +1204,167 @@ i {
         margin-left: -110px;
         margin-top: 52px;
     }
+    /*Sign-In-Up*/
+    .Sign-In-Up-Conatiner {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #8cdfff;
+    }
+    .Sign-In-Up-Sub-Cont {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(10, 10%);
+        grid-template-rows: repeat(10, 10%);
+        background-image: url(./images/loginpage.jpeg);
+        background-position: left top;
+        background-size: 47vw;
+        background-repeat: no-repeat;
+    }
+
+    .Sign-In-Up-Info {
+        padding: 5vh;
+        grid-area: 3/1/7/11;
+        line-height: 1.5;
+        width: 100%;
+        height: 100%;
+    }
+    .Sign-In-Up-Info > h1 {
+        font-size: 3vh;
+    }
+    .Sign-In-Up-Info > h2 {
+        font-size: 2.5vh;
+    }
+    .Sign-In-Up-Info > h3 {
+        font-size: 2vh;
+    }
+    .Sign-In-Up-Info > p {
+        font-size: 1.6vh;
+        margin-top: 0.6vh;
+    }
+    .Sign-In-Up-Controllers {
+        grid-area: 7/1/11/11;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-image: url(./images/peopleSmaller.png);
+        background-position: center;
+        background-size: 40vh;
+    }
+    .Sign-In-Up-Controllers-Login {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+    .Sign-In-Up-Controllers-Register {
+        display: flex;
+        justify-content: center;
+
+        width: 100%;
+        height: 100%;
+    }
+    .btn1 {
+        width: 60vw;
+        height: 5vh;
+        cursor: pointer;
+        background-color: #fae9ad;
+        border: 1px solid #000000;
+        outline: none;
+        transition: 300ms ease-in-out;
+    }
+
+    .btn1:hover {
+        transition: 500ms ease-in-out;
+        background: #ffffff;
+    }
+    /*Login */
+    .Login {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100vw;
+        height: 100vh;
+        background-color: #8cdfff;
+        border: white 2px double;
+        border-radius: 0;
+    }
+    .Login-Welcome-Container {
+        width: 90vw;
+        height: 40vh;
+    }
+    .Login-Welcome-text {
+        text-shadow: 2px 0px 2px #ffffff, 0px 2px 2px #ffffff,
+            4px 2px 2px #ffffff, 2px 4px 2px #ffffff, 6px 4px 2px #ffffff,
+            4px 6px 2px #ffffff, 8px 6px 2px #ffffff, 6px 8px 2px #ffffff,
+            10px 8px 2px #ffffff, 8px 10px 2px #ffffff, 12px 10px 2px #ffffff,
+            10px 12px 2px #ffffff, 14px 12px 2px #ffffff;
+    }
+    .Login-Container {
+        width: 100vw;
+        height: 45vh;
+        background-image: url(./images/peopleLogin.png);
+        background-position: center bottom;
+        background-size: 35vw;
+    }
+
+    .Login-Welcome-text {
+        font-weight: bold;
+        font-size: 2vh;
+    }
+
+    .Login-Section > button {
+        width: 30vw;
+    }
+    /*Register */
+    .Register {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        background-color: #8cdfff;
+        border-radius: 0;
+        border: 3px white double;
+    }
+    .Register-Container {
+        display: flex;
+        flex-direction: column-reverse;
+        width: 70vw;
+        height: 60vh;
+        background-color: white;
+        border-radius: 5%;
+        border: 3px #8cdfff double;
+    }
+    .Register-Form {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .Register-Text {
+        padding: 2vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .Register-Image {
+        width: 50vw;
+        border-radius: 12% 88% 67% 33% / 84% 29% 71% 16%;
+    }
 }
 
 /* Medium-sized smartphones (portrait) */
@@ -649,5 +1442,104 @@ i {
         max-width: 230px;
         margin-left: -100px;
         margin-top: 45px;
+    }
+    /*Sign-In-Up*/
+    .Sign-In-Up-Conatiner {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #8cdfff;
+    }
+    .Sign-In-Up-Sub-Cont {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(10, 10%);
+        grid-template-rows: repeat(10, 10%);
+        background-image: url(./images/loginpage.jpeg);
+        background-position: left top;
+        background-size: 45vw;
+        background-repeat: no-repeat;
+    }
+
+    .Sign-In-Up-Info {
+        padding: 5vh;
+        grid-area: 3/1/7/11;
+        line-height: 1.5;
+        width: 100%;
+        height: 100%;
+    }
+    .Sign-In-Up-Info > h1 {
+        font-size: 3vh;
+    }
+    .Sign-In-Up-Info > h2 {
+        font-size: 2.5vh;
+    }
+    .Sign-In-Up-Info > h3 {
+        font-size: 2vh;
+    }
+    .Sign-In-Up-Info > p {
+        font-size: 1.6vh;
+        margin-top: 0.6vh;
+    }
+    .Sign-In-Up-Controllers {
+        grid-area: 7/1/11/11;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-image: url(./images/peopleSmaller.png);
+        background-position: center;
+        background-size: 40vh;
+    }
+    .Sign-In-Up-Controllers-Login {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+    .Sign-In-Up-Controllers-Register {
+        display: flex;
+        justify-content: center;
+
+        width: 100%;
+        height: 100%;
+    }
+    .btn1 {
+        width: 60vw;
+        height: 5vh;
+        cursor: pointer;
+        background-color: #fae9ad;
+        border: 1px solid #000000;
+        outline: none;
+        transition: 300ms ease-in-out;
+    }
+
+    .btn1:hover {
+        transition: 500ms ease-in-out;
+        background: #ffffff;
+    }
+    /* Login */
+    .Login-Welcome-text {
+        text-shadow: 2px 0px 2px #ffffff, 0px 2px 2px #ffffff,
+            4px 2px 2px #ffffff, 2px 4px 2px #ffffff, 6px 4px 2px #ffffff,
+            4px 6px 2px #ffffff, 8px 6px 2px #ffffff, 6px 8px 2px #ffffff,
+            10px 8px 2px #ffffff, 8px 10px 2px #ffffff, 12px 10px 2px #ffffff,
+            10px 12px 2px #ffffff, 14px 12px 2px #ffffff;
+    }
+
+    /*Register */
+    .Register-Container {
+        width: 80vw;
+        height: 80vh;
+    }
+    .Register-Image {
+        width: 50vw;
+        border-radius: 12% 88% 67% 33% / 84% 29% 71% 16%;
     }
 }
