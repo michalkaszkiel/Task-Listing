@@ -6,7 +6,8 @@ export const Login = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    // const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [error, setError] = useState("");
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const handleLogIn = async (e) => {
         e.preventDefault();
         try {
@@ -19,14 +20,18 @@ export const Login = () => {
             );
 
             if (response.status === 200) {
-                // Login successful, navigate to List
+                // Login successful, store the token and navigate to the List
+                const token = response.data.token;
+                localStorage.setItem("jwtToken", token);
+                setIsLoggedIn(true);
                 navigate("/List");
             } else {
                 // Handle other response statuses if needed
-                console.log("Login failed");
+                setError("Login failed");
             }
         } catch (error) {
-            console.log(error);
+            setError("Login failed");
+            console.error(error);
         }
     };
 

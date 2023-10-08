@@ -1,6 +1,7 @@
 import { body, validationResult } from "express-validator";
 import { StatusCodes } from "http-status-codes";
 import { User } from "../models/User.js";
+import jwt from "jsonwebtoken";
 export const validateFullUserRules = [
     body("email")
         .trim()
@@ -44,4 +45,29 @@ export const validator = (req, res, next) => {
     }
 
     next();
+};
+export const authenticateUser = async (req, res, next) => {
+    try {
+        const token = req.headers.authorization.split(" ")[1];
+        const decodedToken = jwt.verify(token, "verySecret");
+
+        // Fetch the user from the database based on the decoded user information
+        const user = await User.findOne({ userName: decodedToken.name });
+
+        if (!user) {
+            // User not found in the database
+            return res
+                .status(StatusCodes.UNAUTHORIZED)
+                .json({ message: "Auth failed" });
+        }
+
+        // Attach the user object to the request for further use in route handlers
+        req.user = user;
+
+        next();
+    } catch (error) {
+        return res
+            .status(StatusCodes.UNAUTHORIZED)
+            .json({ message: "Auth failed" });
+    }
 };

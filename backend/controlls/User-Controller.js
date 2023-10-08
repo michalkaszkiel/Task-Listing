@@ -2,6 +2,7 @@ import { User } from "../models/User.js";
 import { StatusCodes } from "http-status-codes";
 // import { validationResult } from "express-validator";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 export const createUser = async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, 12);
     try {
@@ -27,28 +28,35 @@ export const createUser = async (req, res) => {
 };
 export const loginUser = async (req, res) => {
     try {
-        //check if the email address doesn't exist
+        // check if the email address doesn't exist
         const user = await User.findOne({ email: req.body.email });
 
         if (!user) {
-            //user with that email address doesn't exist
+            // user with that email address doesn't exist
             return res
                 .status(StatusCodes.NOT_FOUND)
                 .json({ message: "Combination email password does not exist" });
         }
-        //if exists, compare the password of the user with our hash in database
+        // if exists, compare the password of the user with our hash in the database
         const checkPassword = await bcrypt.compare(
             req.body.password,
             user.password
         );
 
         if (checkPassword) {
-            //passwords are matching yaaay!
-            return res
-                .status(StatusCodes.OK)
-                .json({ message: "Login succesful" });
+            // passwords are matching
+            // Create a JSON Web Token (JWT)
+            const token = jwt.sign({ name: user.userName }, "verySecret", {
+                expiresIn: "1h",
+            });
+
+            // Send the token as part of the response
+            res.status(StatusCodes.OK).json({
+                message: "Login successful",
+                token, // Include the token in the response
+            });
         } else {
-            //passwords are not matching
+            // passwords are not matching
             return res
                 .status(StatusCodes.BAD_REQUEST)
                 .json({ message: "Combination email password does not exist" });
@@ -56,6 +64,6 @@ export const loginUser = async (req, res) => {
     } catch (error) {
         return res
             .status(StatusCodes.INTERNAL_SERVER_ERROR)
-            .json({ message: "General error", error: error.toString });
+            .json({ message: "General error", error: error.toString() });
     }
 };
