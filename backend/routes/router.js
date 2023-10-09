@@ -4,7 +4,7 @@ import { GetItems } from "../controlls/Get-Items.js";
 import { UpdateRating } from "../controlls/Update-Rating.js";
 import { UpdateCompleted } from "../controlls/Update-Completed.js";
 import { createUser, loginUser } from "../controlls/User-Controller.js";
-import { DeleteTask } from "../controlls/Delete-task.js";
+import { deleteTask } from "../controlls/delete-task.js";
 import {
     authenticateUser,
     validateFullUserRules,
@@ -19,5 +19,5 @@ router.post("/create-task", authenticateUser, CreateTask);
 router.post("/login", loginUser);
 router.patch("/update-rating/:id", authenticateUser, UpdateRating);
 router.patch("/update-completed/:id", authenticateUser, UpdateCompleted);
-router.patch("/delete-task/:id", authenticateUser, DeleteTask);
+router.delete("/delete/:id", authenticateUser, deleteTask);
 export default router;

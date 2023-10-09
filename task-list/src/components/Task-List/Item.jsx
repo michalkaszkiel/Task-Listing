@@ -9,7 +9,7 @@ export const Item = React.memo(
         handleDelete,
         handleUpdateRating,
     }) => {
-        const handleRatingChange = (newRating) => {
+        const handleUpdateChange = (newRating) => {
             handleUpdateRating(item._id, newRating);
             console.log(item._id, newRating);
         };
@@ -19,7 +19,7 @@ export const Item = React.memo(
                 <div className="Rating-Date">
                     <Rating
                         initialRating={item.priority}
-                        onClick={handleRatingChange}
+                        onClick={handleUpdateChange}
                         emptySymbol={
                             <i
                                 className="fa-regular fa-star"
@@ -53,7 +53,9 @@ export const Item = React.memo(
                         ></i>
                         <i
                             className="fa-regular fa-calendar-xmark"
-                            onClick={() => handleDelete(item._id)}
+                            onClick={() => {
+                                handleDelete(item._id);
+                            }}
                         ></i>
                     </div>
                 )}

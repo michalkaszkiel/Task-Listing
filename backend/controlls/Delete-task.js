@@ -1,13 +1,14 @@
 import { StatusCodes } from "http-status-codes";
 import { User } from "../models/User.js";
 
-export const DeleteTask = async (req, res) => {
+export const deleteTask = async (req, res) => {
     try {
-        const { userName } = req.user;
         const { id } = req.params;
-
-        const findUser = await User.findOneAndUpdate(
-            { userName: userName },
+        const { userName } = req.user;
+        const updatedUser = await User.findOneAndUpdate(
+            {
+                userName: userName,
+            },
             {
                 $pull: {
                     tasks: { _id: id },
@@ -15,16 +16,21 @@ export const DeleteTask = async (req, res) => {
             },
             { new: true }
         );
-        if (!findUser) {
+
+        if (!updatedUser) {
             return res.status(StatusCodes.NOT_FOUND).json({
-                message: "User not found.",
+                message: "User or task not found.",
             });
         }
 
-        console.log(userName);
-        return res.status(StatusCodes.OK).json({ message: "Task deleted" });
+        // Task deleted successfully, return a 200 status
+        return res.status(StatusCodes.OK).json({
+            message: "Task deleted successfully",
+        });
     } catch (error) {
-        console.error("Error delete item:", error);
-        return res.status(500).json({ message: "Internal Server Error" });
+        console.error("Error deleting task:", error);
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+            message: "Internal Server Error",
+        });
     }
 };

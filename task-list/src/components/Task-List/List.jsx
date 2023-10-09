@@ -131,16 +131,22 @@ export const List = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.patch(
-                `http://localhost:3001/api/task-list/delete-task/${id}`,
+            const response = await axios.delete(
+                `http://localhost:3001/api/task-list/delete/${id}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
                 }
             );
-            getItems();
-            setItems(items.filter((item) => item._id !== id));
+
+            if (response.status === 200) {
+                // Update the client-side state to remove the task
+                const updatedItems = items.filter((item) => item._id !== id);
+                setItems(updatedItems);
+            } else {
+                console.error("Unable to delete task:", response.data.message);
+            }
         } catch (error) {
             console.error("Unable to delete task:", error);
         }
@@ -158,6 +164,7 @@ export const List = () => {
                 }
             );
 
+            getItems();
             // After updating priority, fetch the updated list of items
         } catch (error) {
             console.log("Unable to send data to the server");

@@ -6,9 +6,7 @@ export const UpdateRating = async (req, res) => {
     const { priority } = req.body;
     const { userName } = req.user;
     try {
-        console.log("userName:", userName);
-        console.log("taskId:", id);
-        const updatedTask = await User.findByIdAndUpdate(
+        const updatedTask = await User.findOneAndUpdate(
             { userName: userName, "tasks._id": id },
             {
                 $set: {

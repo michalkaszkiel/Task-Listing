@@ -6,6 +6,8 @@ export const Login = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    // const [showPassword, setShowPassword] = useState(false);
+    const [stayLoggedIn, setStayLoggedIn] = useState(false);
     const [error, setError] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const handleLogIn = async (e) => {
@@ -61,7 +63,7 @@ export const Login = () => {
                     />
                     <input
                         onChange={(e) => setPassword(e.target.value)}
-                        type="password"
+                        type={showPassword ? "text" : "password"}
                         placeholder="Password"
                         required
                         className="Login-input"
@@ -79,6 +81,8 @@ export const Login = () => {
                                 type="checkbox"
                                 name="know-more"
                                 className="Login-checkbox"
+                                checked={showPassword}
+                                onChange={() => setShowPassword(!showPassword)}
                             />
                             <span className="Login-span"></span>
                         </label>
