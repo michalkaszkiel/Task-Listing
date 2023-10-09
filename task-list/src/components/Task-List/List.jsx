@@ -12,15 +12,29 @@ export const List = () => {
     const [inputName, setInputName] = useState("");
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [perPage, setPerPage] = useState(5);
-    const { isLoggedIn } = useAuth();
+    const { isLoggedIn, setShouldLogout } = useAuth();
     const [error, setError] = useState(null);
     const toDo = items.filter((item) => !item.completed);
     const done = items.filter((item) => item.completed);
+    const token = localStorage.getItem("jwtToken");
+
     useEffect(() => {
         getItems();
     }, [isLoggedIn]);
 
-    const token = localStorage.getItem("jwtToken");
+    // LogOut user when he leave the page and toggle wasn't checked
+    useEffect(() => {
+        const handleBeforeUnload = () => {
+            setShouldLogout(true);
+        };
+
+        window.addEventListener("beforeunload", handleBeforeUnload);
+
+        return () => {
+            window.removeEventListener("beforeunload", handleBeforeUnload);
+        };
+    }, [setShouldLogout]);
+
     const getItems = async () => {
         try {
             if (!token) {

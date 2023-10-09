@@ -3,7 +3,11 @@ import { CreateTask } from "../controlls/Create-Task.js";
 import { GetItems } from "../controlls/Get-Items.js";
 import { UpdateRating } from "../controlls/Update-Rating.js";
 import { UpdateCompleted } from "../controlls/Update-Completed.js";
-import { createUser, loginUser } from "../controlls/User-Controller.js";
+import {
+    createUser,
+    loginUser,
+    logOutUser,
+} from "../controlls/User-Controller.js";
 import { deleteTask } from "../controlls/delete-task.js";
 import {
     authenticateUser,
@@ -20,4 +24,5 @@ router.post("/login", loginUser);
 router.patch("/update-rating/:id", authenticateUser, UpdateRating);
 router.patch("/update-completed/:id", authenticateUser, UpdateCompleted);
 router.delete("/delete/:id", authenticateUser, deleteTask);
+router.post("/logout", logOutUser);
 export default router;

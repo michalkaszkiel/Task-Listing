@@ -5,6 +5,7 @@ import { Register } from "./components/Register.jsx";
 import { List } from "./components/Task-List/List.jsx";
 import { SignInUp } from "./components/SignInUp.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
+
 function App() {
     return (
         <div className="App">

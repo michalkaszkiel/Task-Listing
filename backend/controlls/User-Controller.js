@@ -67,3 +67,11 @@ export const loginUser = async (req, res) => {
             .json({ message: "General error", error: error.toString() });
     }
 };
+
+export const logOutUser = (req, res) => {
+    try {
+        res.status(StatusCodes.OK).json({ message: "Logged out" });
+    } catch (err) {
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: err });
+    }
+};
