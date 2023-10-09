@@ -8,6 +8,7 @@ export const Done = ({
     handleDelete,
     handleUpdateRating,
     perPage,
+    handleTimeChanged,
 }) => {
     // Check if 'done' is defined and is an array
     if (!done) {
@@ -36,6 +37,7 @@ export const Done = ({
                             handleUndoneItems={handleUndone}
                             handleDelete={handleDelete}
                             handleUpdateRating={handleUpdateRating}
+                            handleTimeChanged={handleTimeChanged}
                         />
                     ))}
                 </div>

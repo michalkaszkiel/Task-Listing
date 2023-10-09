@@ -5,4 +5,5 @@ export const TaskSchema = new Schema({
     deadLine: { type: Number, default: 0 },
     priority: { type: Number, default: 0 },
     completed: { type: Boolean, default: false },
+    time: { type: String, default: "10:00" },
 });

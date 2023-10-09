@@ -23,7 +23,7 @@ export const validateFullUserRules = [
         .withMessage(
             "Password needs to contain at least 8 characters, minimum one lower case character, minimum one uppercase character, minimum one number and minimum one symbol."
         ),
-    body(["userName"])
+    body("userName")
         .trim()
         .isAlpha()
         .withMessage("Username must contain only alphabetical characters"),

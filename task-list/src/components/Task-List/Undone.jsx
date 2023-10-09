@@ -9,6 +9,7 @@ export const Undone = ({
     showCompleted,
     handleUpdateRating,
     perPage,
+    handleTimeChanged,
 }) => {
     const shouldApplyOverflowClass = toDo && toDo.length > perPage;
     const showBothLists = showCompleted
@@ -37,6 +38,7 @@ export const Undone = ({
                                 handleDoneItems={handleDone}
                                 handleUndoneItems={handleUndone}
                                 handleUpdateRating={handleUpdateRating}
+                                handleTimeChanged={handleTimeChanged}
                             />
                         ))}
                         <i
@@ -61,6 +63,7 @@ export const Undone = ({
                             handleDoneItems={handleDone}
                             handleUndoneItems={handleUndone}
                             handleUpdateRating={handleUpdateRating}
+                            handleTimeChanged={handleTimeChanged}
                         />
                     ))}
                     <i

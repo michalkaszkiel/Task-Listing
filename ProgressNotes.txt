@@ -1,17 +1,3 @@
-Schemas added
-
-User     userName: String,
-    password: String,
-    email: String,
-    tasks: [TaskSchema],
-
-
-Task    name: { type: String, required: true },
-    date: { type: Date, default: Date.now }, // Set the type to Date and default to Date.now
-    deadLine: { type: Number, default: 0 },
-    priority: { type: Number, default: 0 },
-    completed: { type: Boolean, default: false },
-
-
-    Login Page 
-    Change controllers and change frontend functions
+1. Update authorization rules for register. It allows to create same users on same emails and names, disallow it.
+2. Landing page more informative.
+3.

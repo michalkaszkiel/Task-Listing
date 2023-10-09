@@ -276,6 +276,9 @@ div.Landing-text p::after {
     font-size: 1.5vh;
     color: #333;
 }
+.Time-Picker {
+    font-size: 1.5vh;
+}
 form {
     display: flex;
     flex-direction: row;
@@ -657,6 +660,13 @@ i {
         transition: 500ms ease-in-out;
         background: #ffffff;
     }
+    .User-Login {
+        grid-area: 2/8/3/11;
+        font-size: smaller;
+        width: 100%;
+        height: 5vh;
+        flex-direction: row;
+    }
 }
 
 /* Tablets in portrait mode */
@@ -898,6 +908,13 @@ i {
     }
     .Login-Section > button {
         width: 40vw;
+    }
+    .User-Login {
+        grid-area: 2/9/3/11;
+        font-size: smaller;
+        width: 100%;
+        height: 5vh;
+        flex-direction: column;
     }
 
     /*Register */
@@ -1202,7 +1219,7 @@ i {
         margin-bottom: 2vh;
     }
     .Form-Container > form > input {
-        width: 40vw;
+        width: 30vw;
         height: 5vh;
     }
     .Done-Container {
@@ -1353,6 +1370,13 @@ i {
     .Login-Section > button {
         width: 30vw;
     }
+    .User-Login {
+        grid-area: 2/9/3/11;
+        font-size: smaller;
+        width: 100%;
+        height: 5vh;
+        flex-direction: column;
+    }
     /*Register */
     .Register {
         display: flex;
@@ -1450,10 +1474,10 @@ i {
         height: 100%;
     }
     .Form-Container > h1 {
-        margin-bottom: 2vh;
+        margin-bottom: 1.6vh;
     }
     .Form-Container > form > input {
-        width: 50vw;
+        width: 35vw;
         height: 5vh;
     }
     .Done-Container {

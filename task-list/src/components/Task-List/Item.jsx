@@ -1,6 +1,6 @@
 import React from "react";
 import Rating from "react-rating";
-
+import TimePickerApp from "./TimePicker.jsx";
 export const Item = React.memo(
     ({
         item,
@@ -8,6 +8,7 @@ export const Item = React.memo(
         handleUndoneItems,
         handleDelete,
         handleUpdateRating,
+        handleTimeChanged,
     }) => {
         const handleUpdateChange = (newRating) => {
             handleUpdateRating(item._id, newRating);
@@ -39,6 +40,10 @@ export const Item = React.memo(
                     <p className="Item-DeadLine">{`${item.deadLine} days left`}</p>{" "}
                 </div>
                 <p className="Item-Name">{item.name}</p>
+                <TimePickerApp
+                    handleTimeChanged={handleTimeChanged}
+                    item={item}
+                />
                 {!item.completed && (
                     <i
                         className="fa-solid fa-circle-check"

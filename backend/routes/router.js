@@ -3,6 +3,7 @@ import { CreateTask } from "../controlls/Create-Task.js";
 import { GetItems } from "../controlls/Get-Items.js";
 import { UpdateRating } from "../controlls/Update-Rating.js";
 import { UpdateCompleted } from "../controlls/Update-Completed.js";
+import { UpdateTime } from "../controlls/Update-Time.js";
 import {
     createUser,
     loginUser,
@@ -24,5 +25,6 @@ router.post("/login", loginUser);
 router.patch("/update-rating/:id", authenticateUser, UpdateRating);
 router.patch("/update-completed/:id", authenticateUser, UpdateCompleted);
 router.delete("/delete/:id", authenticateUser, deleteTask);
+router.patch("/update-time/:id", authenticateUser, UpdateTime);
 router.post("/logout", logOutUser);
 export default router;

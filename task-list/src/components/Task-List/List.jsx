@@ -11,6 +11,7 @@ export const List = () => {
     const [items, setItems] = useState([]);
     const [inputName, setInputName] = useState("");
     const [selectedDate, setSelectedDate] = useState(new Date());
+
     const [perPage, setPerPage] = useState(5);
     const { isLoggedIn, setShouldLogout } = useAuth();
     const [error, setError] = useState(null);
@@ -34,6 +35,17 @@ export const List = () => {
             window.removeEventListener("beforeunload", handleBeforeUnload);
         };
     }, [setShouldLogout]);
+
+    useEffect(() => {
+        // Check the screen width and set perPage accordingly
+        if (window.innerWidth <= 768) {
+            // Adjust perPage for smartphone resolutions
+            setPerPage(3); // Change this value to your desired limit for smartphones
+        } else {
+            // Default perPage value for larger screens
+            setPerPage(5); // Change this value to your default limit for larger screens
+        }
+    }, []);
 
     const getItems = async () => {
         try {
@@ -78,6 +90,7 @@ export const List = () => {
                     deadLine: calculateDaysRemaining(new Date(selectedDate)),
                     priority: null,
                     completed: false,
+                    time: null,
                 },
             });
             getItems();
@@ -184,6 +197,24 @@ export const List = () => {
             console.log("Unable to send data to the server");
         }
     };
+    const handleTimeChanged = async (id, newTime) => {
+        try {
+            await axios.patch(
+                `http://localhost:3001/api/task-list/update-time/${id}`,
+                { time: newTime },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+
+            getItems();
+            // After updating priority, fetch the updated list of items
+        } catch (error) {
+            console.log("Unable to send data to the server", error);
+        }
+    };
     const calculateDaysRemaining = (newDate) => {
         const today = new Date();
         // Calculate the time difference in milliseconds
@@ -217,6 +248,7 @@ export const List = () => {
                         selectedDate={selectedDate}
                         handleUpdateRating={handleUpdateRating}
                         perPage={perPage}
+                        handleTimeChanged={handleTimeChanged}
                     />
                 )}
                 <Undone
@@ -228,6 +260,7 @@ export const List = () => {
                     selectedDate={selectedDate}
                     handleUpdateRating={handleUpdateRating}
                     perPage={perPage}
+                    handleTimeChanged={handleTimeChanged}
                 />
             </div>
         </div>
