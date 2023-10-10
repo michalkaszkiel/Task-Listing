@@ -13,7 +13,7 @@ export const Register = () => {
         e.preventDefault();
         try {
             const response = await axios.post(
-                "http://localhost:3001/api/task-list/create-user",
+                "https://task-list-crud.onrender.com/api/task-list/create-user",
                 {
                     userName: userName,
                     email: userEmail,

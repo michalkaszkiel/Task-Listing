@@ -39,7 +39,7 @@ export const Form = ({
     const handleLogOut = async () => {
         try {
             const logOut = await axios.post(
-                "http://localhost:3001/api/task-list/logout"
+                "https://task-list-crud.onrender.com/api/task-list/logout"
             );
             // Remove the JWT token from local storage
 
