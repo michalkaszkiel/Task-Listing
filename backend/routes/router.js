@@ -9,7 +9,7 @@ import {
     loginUser,
     logOutUser,
 } from "../controlls/User-Controller.js";
-import { deleteTask } from "../controlls/delete-task.js";
+import { deleteTask } from "../controlls/deletetask.js";
 import {
     authenticateUser,
     validateFullUserRules,
