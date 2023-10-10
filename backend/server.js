@@ -36,7 +36,7 @@ mongoose
         console.log("🤨");
     });
 // Serve static files from the 'build' directory
-app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static(path.join(__dirname, "../task-list/build")));
 
 // Handle all routes and serve the index.html file
 app.get("*", (req, res) => {
