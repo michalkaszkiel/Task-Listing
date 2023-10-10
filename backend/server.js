@@ -22,7 +22,11 @@ app.use("/api/task-list", router);
 
 mongoose
     .connect(
-        `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_NAME}`
+        `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
+        {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        }
     )
     .then(() => {
         console.log("Database connected! 😃");
