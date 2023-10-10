@@ -7,18 +7,10 @@ import cookieParser from "cookie-parser";
 import { __dirname } from "./global.js"; // Import __dirname from global.js
 import path from "path"; // Import path module
 
-dotenv.config();
 const app = express();
+dotenv.config();
 app.use(cookieParser());
 const port = process.env.PORT || 10000;
-const corsOptions = {
-    origin: "*", //allow all origins * = wildcard
-    methods: ["HEAD", "GET", "POST", "PATCH", "DELETE"],
-    credentials: true, //allow cookies to be sent with requests
-};
-app.use(express.json());
-app.use(cors(corsOptions));
-app.use("/api/task-list", router);
 
 mongoose
     .connect(
@@ -36,6 +28,14 @@ mongoose
         console.log("🤨");
     });
 // Serve static files from the 'build' directory
+const corsOptions = {
+    origin: "*", //allow all origins * = wildcard
+    methods: ["HEAD", "GET", "POST", "PATCH", "DELETE"],
+    credentials: true, //allow cookies to be sent with requests
+};
+app.use(express.json());
+app.use(cors(corsOptions));
+app.use("/api/task-list", router);
 app.use(express.static(path.join(__dirname, "build")));
 
 // Handle all routes and serve the index.html file
