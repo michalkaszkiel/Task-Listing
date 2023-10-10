@@ -5,38 +5,25 @@ import { Done } from "./Done";
 import { Undone } from "./Undone";
 import React from "react";
 import { useAuth } from "../../context/AuthContext.jsx";
+import { useCookie } from "../../context/CookieContext.jsx";
 import Cookies from "js-cookie";
+
 
 export const List = () => {
     const [showCompleted, setShowCompleted] = useState(false);
     const [items, setItems] = useState([]);
     const [inputName, setInputName] = useState("");
     const [selectedDate, setSelectedDate] = useState(new Date());
-
     const [perPage, setPerPage] = useState(5);
-    const { isLoggedIn, setShouldLogout } = useAuth();
-    const [error, setError] = useState(null);
+    const { isLoggedIn } = useAuth();
+    const { cookie } = useCookie();
     const toDo = items.filter((item) => !item.completed);
     const done = items.filter((item) => item.completed);
-    // const token = localStorage.getItem("jwtToken");
-    const token = Cookies.get("jwtToken");
+    const token = cookie ? Cookies.get("jwtToken") : localStorage.getItem("jwtToken");
 
     useEffect(() => {
         getItems();
     }, [isLoggedIn]);
-
-    // LogOut user when he leave the page and toggle wasn't checked
-    useEffect(() => {
-        const handleBeforeUnload = () => {
-            setShouldLogout(true);
-        };
-
-        window.addEventListener("beforeunload", handleBeforeUnload);
-
-        return () => {
-            window.removeEventListener("beforeunload", handleBeforeUnload);
-        };
-    }, [setShouldLogout]);
 
     useEffect(() => {
         // Check the screen width and set perPage accordingly
@@ -56,7 +43,6 @@ export const List = () => {
                 console.error("User is not authenticated");
                 return;
             }
-
             const response = await axios.get(
                 "http://localhost:3001/api/task-list/get-items",
                 {
@@ -65,7 +51,6 @@ export const List = () => {
                     },
                 }
             );
-
             const receivedItems = response.data.tasks;
             setItems(receivedItems);
             console.log("Received items:", receivedItems);
@@ -112,7 +97,6 @@ export const List = () => {
                     },
                 }
             );
-
             if (response.status === 200) {
                 // Update the client-side state to mark the task as completed
                 const updatedItems = items.map((item) =>
@@ -129,6 +113,7 @@ export const List = () => {
             console.error("Unable to mark task as uncompleted:", error);
         }
     };
+
     const handleDoneItems = async (id) => {
         try {
             const response = await axios.patch(
@@ -140,7 +125,6 @@ export const List = () => {
                     },
                 }
             );
-
             if (response.status === 200) {
                 // Update the client-side state to mark the task as completed
                 const updatedItems = items.map((item) =>
@@ -168,7 +152,6 @@ export const List = () => {
                     },
                 }
             );
-
             if (response.status === 200) {
                 // Update the client-side state to remove the task
                 const updatedItems = items.filter((item) => item._id !== id);
@@ -192,7 +175,6 @@ export const List = () => {
                     },
                 }
             );
-
             getItems();
             // After updating priority, fetch the updated list of items
         } catch (error) {
@@ -210,13 +192,13 @@ export const List = () => {
                     },
                 }
             );
-
             getItems();
             // After updating priority, fetch the updated list of items
         } catch (error) {
             console.log("Unable to send data to the server", error);
         }
     };
+
     const calculateDaysRemaining = (newDate) => {
         const today = new Date();
         // Calculate the time difference in milliseconds
@@ -224,12 +206,15 @@ export const List = () => {
         // Convert milliseconds to days
         return Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
     };
+
     const handleDateChange = (date) => {
         setSelectedDate(date);
     };
+
     const handleShowCompleted = () => {
         setShowCompleted(!showCompleted);
     };
+    
     const handleBackground = showCompleted ? "MainOff" : "Sub-List-Main";
     return (
         <div className="List-Main">

@@ -2,16 +2,18 @@ import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
+import { useCookie } from "../context/CookieContext.jsx";
 import Cookies from "js-cookie";
 
 export const Login = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
     const [password, setPassword] = useState("");
-    const [stayLoggedIn, setStayLoggedIn] = useState(false);
     const [error, setError] = useState("");
     const { login } = useAuth(); // Get the login function and rememberMe setter from the context
-
+    const { cookie } = useCookie();
+    const [rememberMe, setRememberMe] = useState(false);
     const handleLogIn = async (e) => {
         e.preventDefault();
         try {
@@ -20,16 +22,20 @@ export const Login = () => {
                 {
                     email: email,
                     password: password,
+                    rememberMe: rememberMe,
                 }
             );
 
             if (response.status === 200) {
                 // Login successful, store the token and navigate to the List
                 const token = response.data.token;
-                // localStorage.setItem("jwtToken", token);
-                Cookies.set("jwtToken", token);
+                if (cookie === false) {
+                    localStorage.setItem("jwtToken", token);
+                } else {
+                    Cookies.set("jwtToken", token);
+                }
                 // Call the login function from the context and set rememberMe state
-                login(stayLoggedIn);
+                login();
 
                 navigate("/List");
             } else {
@@ -73,7 +79,7 @@ export const Login = () => {
                     />
                     <input
                         onChange={(e) => setPassword(e.target.value)}
-                        type="password"
+                        type={showPassword ? "text" : "password"}
                         placeholder="Password"
                         required
                         className="Login-input"
@@ -91,11 +97,11 @@ export const Login = () => {
                                 type="checkbox"
                                 name="rememberMe"
                                 className="Login-checkbox"
-                                checked={stayLoggedIn}
-                                onChange={() => setStayLoggedIn(!stayLoggedIn)}
+                                checked={rememberMe}
+                                onChange={() => setRememberMe(!rememberMe)}
                             />
                             <span className="Login-span"></span>
-                            Remember Me
+                            Show Password
                         </label>
                     </section>
                 </form>

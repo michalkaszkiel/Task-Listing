@@ -35,8 +35,6 @@ export const SignInUp = () => {
                     </div>
                 </div>
             </div>
-            {/* <Login />
-            <Register /> */}
         </div>
     );
 };

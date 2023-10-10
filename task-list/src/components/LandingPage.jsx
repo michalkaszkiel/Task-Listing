@@ -2,6 +2,7 @@ import list from "../images/list.png";
 import { Fade } from "react-reveal";
 import { Link } from "react-router-dom";
 import { Footer } from "./Footer.jsx";
+import { CookiesAlert } from "./CookiesAlert.jsx";
 
 export const LandingPage = () => {
     const listed = list;
@@ -18,7 +19,7 @@ export const LandingPage = () => {
                         <div className="Landing-Page-Sub-Text">
                             <h1>Keep your tasks in one place...</h1>
                             <p className="never-forget">
-                                And never forget a thing.
+                                And never forget a thing...
                             </p>
                         </div>
                         <div className="Landing-Page-Image-Cont">
@@ -28,12 +29,14 @@ export const LandingPage = () => {
                                     src={listed}
                                     className="Landing-Page-Image pulse-on"
                                 ></img>
-                                <p className="Click-me">Click me!</p>
+                                <p className="Click-me">Let's start!</p>
                             </Link>
                         </div>
                     </div>
                 </Fade>
+
                 <Footer />
+                <CookiesAlert />
             </div>
         </>
     );

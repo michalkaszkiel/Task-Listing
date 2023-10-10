@@ -4,6 +4,9 @@ import MyCalendar from "./MyCalendar";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../../context/AuthContext.jsx";
+import Cookies from "js-cookie";
+import jwt_decode from "jwt-decode";
+
 export const Form = ({
     handleSubmit,
     setInputName,
@@ -11,7 +14,7 @@ export const Form = ({
     setSelectedDate,
     handleDateChange,
 }) => {
-    const { isLoggedIn } = useAuth();
+    const { isLoggedIn, logout } = useAuth();
     const navigate = useNavigate();
     const [showSecondHeader, setShowSecondHeader] = useState(false);
     const [showCalendar, setShowCalendar] = useState(false);
@@ -41,13 +44,25 @@ export const Form = ({
             // Remove the JWT token from local storage
 
             if (logOut.status === 200) {
-                localStorage.removeItem("jwtToken");
+                Cookies.remove("jwtToken");
                 navigate("/Login");
             }
         } catch (e) {
             console.error("Unable to Logout", e);
         }
     };
+    // Check if token has expired, if yes log the user out
+    useEffect(() => {
+        const token = Cookies.get("jwtToken");
+        if (token) {
+            const decodedToken = jwt_decode(token);
+            const currentTime = Date.now() / 1000; // Current time in seconds
+            if (decodedToken.exp < currentTime) {
+                // Token has expired, log the user out
+                logout();
+            }
+        }
+    }, [isLoggedIn, logout]);
 
     return (
         <>

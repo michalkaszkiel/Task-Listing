@@ -1,36 +1,19 @@
 // AuthContext.jsx
-import React, { createContext, useContext, useState, useEffect } from "react";
-
+import React, { createContext, useContext, useState } from "react";
+import Cookies from "js-cookie";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [isLoggedIn, setIsLoggedIn] = useState(
-        !!localStorage.getItem("jwtToken")
-    );
-    const [rememberMe, setRememberMe] = useState(false);
-    const [shouldLogout, setShouldLogout] = useState(false); //automatic logout
+    const [isLoggedIn, setIsLoggedIn] = useState(!!Cookies.get("jwtToken"));
 
-    const login = (remember = false) => {
+    const login = () => {
         setIsLoggedIn(true);
-        if (remember) {
-            setRememberMe(true);
-        }
     };
 
     const logout = () => {
+        Cookies.remove("jwtToken");
         setIsLoggedIn(false);
-        if (!rememberMe) {
-            localStorage.removeItem("jwtToken");
-        }
     };
-
-    // Add an effect to handle automatic logout
-    useEffect(() => {
-        if (shouldLogout) {
-            logout();
-            setShouldLogout(false); // Reset logout
-        }
-    }, [shouldLogout]);
 
     return (
         <AuthContext.Provider
@@ -38,9 +21,6 @@ export const AuthProvider = ({ children }) => {
                 isLoggedIn,
                 login,
                 logout,
-                rememberMe,
-                setRememberMe,
-                setShouldLogout, // Provide the flag to components
             }}
         >
             {children}

@@ -20,7 +20,6 @@ export const Register = () => {
                     password: password,
                 }
             );
-            // setIsRegistered(true);
             if (response.status === 201) {
                 setIsRegistered(true);
                 console.log("User created successfully");
