@@ -45,7 +45,7 @@ export const List = () => {
                 return;
             }
             const response = await axios.get(
-                "https://task-list-crud.onrender.com/api/task-list/get-items",
+                "https://task-list-crud2.onrender.com/api/task-list/get-items",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -67,7 +67,7 @@ export const List = () => {
         try {
             await axios({
                 method: "post",
-                url: "https://task-list-crud.onrender.com/api/task-list/create-task",
+                url: "https://task-list-crud2.onrender.com/api/task-list/create-task",
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -90,7 +90,7 @@ export const List = () => {
     const handleUndoneItems = async (id) => {
         try {
             const response = await axios.patch(
-                `https://task-list-crud.onrender.com/api/task-list/update-completed/${id}`,
+                `https://task-list-crud2.onrender.com/api/task-list/update-completed/${id}`,
                 { completed: false },
                 {
                     headers: {
@@ -118,7 +118,7 @@ export const List = () => {
     const handleDoneItems = async (id) => {
         try {
             const response = await axios.patch(
-                `https://task-list-crud.onrender.com/api/task-list/update-completed/${id}`,
+                `https://task-list-crud2.onrender.com/api/task-list/update-completed/${id}`,
                 { completed: true },
                 {
                     headers: {
@@ -146,7 +146,7 @@ export const List = () => {
     const handleDelete = async (id) => {
         try {
             const response = await axios.delete(
-                `https://task-list-crud.onrender.com/api/task-list/delete/${id}`,
+                `https://task-list-crud2.onrender.com/api/task-list/delete/${id}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -168,7 +168,7 @@ export const List = () => {
     const handleUpdateRating = async (id, newRating) => {
         try {
             await axios.patch(
-                `https://task-list-crud.onrender.com/api/task-list/update-rating/${id}`,
+                `https://task-list-crud2.onrender.com/api/task-list/update-rating/${id}`,
                 { priority: newRating },
                 {
                     headers: {
@@ -185,7 +185,7 @@ export const List = () => {
     const handleTimeChanged = async (id, newTime) => {
         try {
             await axios.patch(
-                `https://task-list-crud.onrender.com/api/task-list/update-time/${id}`,
+                `https://task-list-crud2.onrender.com/api/task-list/update-time/${id}`,
                 { time: newTime },
                 {
                     headers: {
