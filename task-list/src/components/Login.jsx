@@ -101,7 +101,7 @@ export const Login = () => {
                                 onChange={() => setRememberMe(!rememberMe)}
                             />
                             <span className="Login-span"></span>
-                            Show Password
+                            Remember Me
                         </label>
                     </section>
                 </form>
