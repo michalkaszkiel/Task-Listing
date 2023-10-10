@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
+import Cookies from "js-cookie";
 
 export const Login = () => {
     const navigate = useNavigate();
@@ -9,7 +10,7 @@ export const Login = () => {
     const [password, setPassword] = useState("");
     const [stayLoggedIn, setStayLoggedIn] = useState(false);
     const [error, setError] = useState("");
-    const { login, setRememberMe } = useAuth(); // Get the login function and rememberMe setter from the context
+    const { login } = useAuth(); // Get the login function and rememberMe setter from the context
 
     const handleLogIn = async (e) => {
         e.preventDefault();
@@ -25,8 +26,8 @@ export const Login = () => {
             if (response.status === 200) {
                 // Login successful, store the token and navigate to the List
                 const token = response.data.token;
-                localStorage.setItem("jwtToken", token);
-
+                // localStorage.setItem("jwtToken", token);
+                Cookies.set("jwtToken", token);
                 // Call the login function from the context and set rememberMe state
                 login(stayLoggedIn);
 
@@ -36,8 +37,13 @@ export const Login = () => {
                 setError("Login failed");
             }
         } catch (error) {
-            setError("Login failed");
-            console.error(error);
+            const response = await error.response;
+            if (response.status) {
+                window.alert(response.data.message);
+                console.log("Unable to create user");
+            } else {
+                console.log("Unable to send data to the server");
+            }
         }
     };
 

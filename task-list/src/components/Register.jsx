@@ -12,7 +12,7 @@ export const Register = () => {
     const handleRegister = async (e) => {
         e.preventDefault();
         try {
-            await axios.post(
+            const response = await axios.post(
                 "http://localhost:3001/api/task-list/create-user",
                 {
                     userName: userName,
@@ -20,9 +20,19 @@ export const Register = () => {
                     password: password,
                 }
             );
-            setIsRegistered(true);
+            // setIsRegistered(true);
+            if (response.status === 201) {
+                setIsRegistered(true);
+                console.log("User created successfully");
+            }
         } catch (err) {
-            console.log("Unable to send data to the server");
+            const response = await err.response;
+            if (response.status) {
+                window.alert(response.data.message);
+                console.log("Unable to create user");
+            } else {
+                console.log("Unable to send data to the server");
+            }
         }
     };
     return (

@@ -3,7 +3,29 @@ import { StatusCodes } from "http-status-codes";
 // import { validationResult } from "express-validator";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+
 export const createUser = async (req, res) => {
+    // Check if a user with the same email or username already exists
+    const existingUser = await User.findOne({
+        $or: [{ userName: req.body.userName }, { email: req.body.email }],
+    });
+
+    if (existingUser) {
+        // Determine whether it's a duplicate email or username
+        if (existingUser.userName === req.body.userName) {
+            // Duplicate username
+            return res.status(StatusCodes.BAD_REQUEST).json({
+                message: "Username already exists",
+            });
+        } else {
+            // Duplicate email
+            return res.status(StatusCodes.BAD_REQUEST).json({
+                message: "Email already exists",
+            });
+        }
+    }
+
+    // If no existing user, proceed with user creation
     const hashedPassword = await bcrypt.hash(req.body.password, 12);
     try {
         const newUser = await User.create({
@@ -19,13 +41,14 @@ export const createUser = async (req, res) => {
             newUser,
         });
     } catch (error) {
-        // Handle errors by sending an error response
+        // Handle other errors by sending an error response
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             message: "Failed to create user",
             error: error.message, // Include the error message for debugging
         });
     }
 };
+
 export const loginUser = async (req, res) => {
     try {
         // check if the email address doesn't exist
@@ -51,14 +74,17 @@ export const loginUser = async (req, res) => {
             });
 
             // Send the token as part of the response
-            res.status(StatusCodes.OK).json({
-                message: "Login successful",
-                token, // Include the token in the response
-            });
-        } else {
+            res.status(StatusCodes.OK)
+                .cookie("jwtToken", token, { httpOnly: true })
+                .json({ token });
+            // .json({
+            //     message: "Login successful",
+            //     token, // Include the token in the response
+            // });
+        } else if (!checkPassword) {
             // passwords are not matching
             return res
-                .status(StatusCodes.BAD_REQUEST)
+                .status(StatusCodes.UNAUTHORIZED)
                 .json({ message: "Combination email password does not exist" });
         }
     } catch (error) {

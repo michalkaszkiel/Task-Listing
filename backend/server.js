@@ -3,16 +3,18 @@ import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
 import router from "./routes/router.js";
+import cookieParser from "cookie-parser";
 // import { __dirname } from "./global.js"; // Import __dirname from global.js
 // import path from "path"; // Import path module
 
 dotenv.config();
-
 const app = express();
+app.use(cookieParser());
 const port = process.env.PORT || 10000;
 const corsOptions = {
     origin: "*", //allow all origins * = wildcard
     methods: ["HEAD", "GET", "POST", "PATCH", "DELETE"],
+    credentials: true, //allow cookies to be sent with requests
 };
 app.use(express.json());
 app.use(cors(corsOptions));

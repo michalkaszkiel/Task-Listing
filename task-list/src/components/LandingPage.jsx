@@ -17,15 +17,18 @@ export const LandingPage = () => {
                     <div className="Landing-text ">
                         <div className="Landing-Page-Sub-Text">
                             <h1>Keep your tasks in one place...</h1>
-                            <p>And never forget a thing.</p>
+                            <p className="never-forget">
+                                And never forget a thing.
+                            </p>
                         </div>
                         <div className="Landing-Page-Image-Cont">
-                            <Link to="/SignInUp">
+                            <Link to="/SignInUp" className="link">
                                 <img
                                     alt="list"
                                     src={listed}
                                     className="Landing-Page-Image pulse-on"
                                 ></img>
+                                <p className="Click-me">Click me!</p>
                             </Link>
                         </div>
                     </div>

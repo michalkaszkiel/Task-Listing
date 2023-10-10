@@ -5,6 +5,7 @@ import { Done } from "./Done";
 import { Undone } from "./Undone";
 import React from "react";
 import { useAuth } from "../../context/AuthContext.jsx";
+import Cookies from "js-cookie";
 
 export const List = () => {
     const [showCompleted, setShowCompleted] = useState(false);
@@ -17,7 +18,8 @@ export const List = () => {
     const [error, setError] = useState(null);
     const toDo = items.filter((item) => !item.completed);
     const done = items.filter((item) => item.completed);
-    const token = localStorage.getItem("jwtToken");
+    // const token = localStorage.getItem("jwtToken");
+    const token = Cookies.get("jwtToken");
 
     useEffect(() => {
         getItems();

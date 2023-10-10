@@ -45,6 +45,12 @@ div.Landing-text {
     justify-content: center;
     align-items: center;
 }
+.Click-me {
+    padding-top: 1rem;
+    text-align: center;
+    text-decoration: none;
+}
+
 .Landing-Page-Image {
     max-width: 13vw;
     max-height: 13vh;
@@ -61,13 +67,13 @@ div.Landing-text h1 {
     font-size: 2.1vw;
     color: #000000;
 }
-div.Landing-text p {
+div.Landing-text .never-forget {
     font-size: 0.9vw;
     color: #000000;
     padding-top: 4vh;
     position: relative;
 }
-div.Landing-text p::after {
+div.Landing-text .never-forget::after {
     content: "";
     position: absolute;
     display: block;
@@ -77,10 +83,11 @@ div.Landing-text p::after {
     margin-top: 0.5rem;
     animation: slide 1.7s 800ms ease-in forwards;
 }
-.Link {
+.link {
     text-decoration: none;
+    color: #000000;
+    font-size: larger;
 }
-
 /* List */
 .List-Main {
     width: 100vw;
@@ -692,11 +699,11 @@ i {
         font-size: 3.5vw;
         color: #000000;
     }
-    div.Landing-text p {
+    div.Landing-text .never-forget {
         font-size: 2.5vw;
         padding-top: 2vh;
     }
-    div.Landing-text p::after {
+    div.Landing-text .never-forget::after {
         height: 0px;
     }
 
@@ -980,11 +987,11 @@ i {
         font-size: 3.5vw;
         color: #000000;
     }
-    div.Landing-text p {
+    div.Landing-text .never-forget {
         font-size: 2vw;
         padding-top: 2vh;
     }
-    div.Landing-text p::after {
+    div.Landing-text .never-forget::after {
         height: 0px;
     }
 
@@ -1191,11 +1198,11 @@ i {
         font-size: 5vw;
         color: #000000;
     }
-    div.Landing-text p {
+    div.Landing-text .never-forget {
         font-size: 3.5vw;
         padding-top: 2vh;
     }
-    div.Landing-text p::after {
+    div.Landing-text .never-forget::after {
         height: 0px;
     }
 
@@ -1447,11 +1454,11 @@ i {
         font-size: 5vw;
         color: #000000;
     }
-    div.Landing-text p {
+    div.Landing-text .never-forget {
         font-size: 3.5vw;
         padding-top: 2vh;
     }
-    div.Landing-text p::after {
+    div.Landing-text .never-forget::after {
         height: 0px;
     }
 
