@@ -11,8 +11,8 @@ export const AuthProvider = ({ children }) => {
     };
 
     const logout = () => {
-        setIsLoggedIn(false);
         Cookies.remove("jwtToken", { httpOnly: true, secure: true });
+        setIsLoggedIn(false);
     };
 
     return (

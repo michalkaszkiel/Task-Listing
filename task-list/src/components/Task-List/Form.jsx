@@ -44,7 +44,7 @@ export const Form = ({
             // Remove the JWT token from local storage
 
             if (logOut.status === 200) {
-                logout();
+                Cookies.remove("jwtToken", { httpOnly: true, secure: true });
                 navigate("/Login");
             }
         } catch (e) {
