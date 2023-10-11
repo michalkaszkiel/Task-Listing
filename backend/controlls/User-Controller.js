@@ -76,7 +76,7 @@ export const loginUser = async (req, res) => {
 
             // Store the token in both cookies and local storage
             res.status(StatusCodes.OK)
-                .cookie("jwtToken", token, { httpOnly: true })
+                .cookie("jwtToken", token, { httpOnly: true, secure: true })
                 .json({ token });
 
             // Store the token in local storage as well

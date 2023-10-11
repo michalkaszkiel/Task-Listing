@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { Form } from "./Form";
 import { Done } from "./Done";
 import { Undone } from "./Undone";
@@ -7,7 +6,7 @@ import React from "react";
 import { useAuth } from "../../context/AuthContext.jsx";
 import { useCookie } from "../../context/CookieContext.jsx";
 import Cookies from "js-cookie";
-
+import createApiInstance from "../../util/axiosInstance.js";
 export const List = () => {
     const [showCompleted, setShowCompleted] = useState(false);
     const [items, setItems] = useState([]);
@@ -21,6 +20,7 @@ export const List = () => {
     const token = cookie
         ? Cookies.get("jwtToken")
         : localStorage.getItem("jwtToken");
+    const api = createApiInstance(token);
 
     useEffect(() => {
         getItems();
@@ -44,14 +44,7 @@ export const List = () => {
                 console.error("User is not authenticated");
                 return;
             }
-            const response = await axios.get(
-                "https://task-list-crud2.onrender.com/api/task-list/get-items",
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                }
-            );
+            const response = await api.get("/get-items"); // Use the api instance
             const receivedItems = response.data.tasks;
             setItems(receivedItems);
             console.log("Received items:", receivedItems);
@@ -65,21 +58,14 @@ export const List = () => {
         if (!inputName) return;
 
         try {
-            await axios({
-                method: "post",
-                url: "https://task-list-crud2.onrender.com/api/task-list/create-task",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
+            await api.post("/create-task", {
                 // Corrected data structure to match the server's expectation.
-                data: {
-                    name: inputName,
-                    date: selectedDate,
-                    deadLine: calculateDaysRemaining(new Date(selectedDate)),
-                    priority: null,
-                    completed: false,
-                    time: null,
-                },
+                name: inputName,
+                date: selectedDate,
+                deadLine: calculateDaysRemaining(new Date(selectedDate)),
+                priority: null,
+                completed: false,
+                time: null,
             });
             getItems();
         } catch (error) {
@@ -89,15 +75,9 @@ export const List = () => {
 
     const handleUndoneItems = async (id) => {
         try {
-            const response = await axios.patch(
-                `https://task-list-crud2.onrender.com/api/task-list/update-completed/${id}`,
-                { completed: false },
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                }
-            );
+            const response = await api.patch(`/update-completed/${id}`, {
+                completed: false,
+            });
             if (response.status === 200) {
                 // Update the client-side state to mark the task as completed
                 const updatedItems = items.map((item) =>
@@ -117,15 +97,9 @@ export const List = () => {
 
     const handleDoneItems = async (id) => {
         try {
-            const response = await axios.patch(
-                `https://task-list-crud2.onrender.com/api/task-list/update-completed/${id}`,
-                { completed: true },
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                }
-            );
+            const response = await api.patch(`/update-completed/${id}`, {
+                completed: true,
+            });
             if (response.status === 200) {
                 // Update the client-side state to mark the task as completed
                 const updatedItems = items.map((item) =>
@@ -145,14 +119,7 @@ export const List = () => {
 
     const handleDelete = async (id) => {
         try {
-            const response = await axios.delete(
-                `https://task-list-crud2.onrender.com/api/task-list/delete/${id}`,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                }
-            );
+            const response = await api.delete(`/delete/${id}`);
             if (response.status === 200) {
                 // Update the client-side state to remove the task
                 const updatedItems = items.filter((item) => item._id !== id);
@@ -167,15 +134,9 @@ export const List = () => {
 
     const handleUpdateRating = async (id, newRating) => {
         try {
-            await axios.patch(
-                `https://task-list-crud2.onrender.com/api/task-list/update-rating/${id}`,
-                { priority: newRating },
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                }
-            );
+            await api.patch(`/update-rating/${id}`, {
+                priority: newRating,
+            });
             getItems();
             // After updating priority, fetch the updated list of items
         } catch (error) {
@@ -184,15 +145,7 @@ export const List = () => {
     };
     const handleTimeChanged = async (id, newTime) => {
         try {
-            await axios.patch(
-                `https://task-list-crud2.onrender.com/api/task-list/update-time/${id}`,
-                { time: newTime },
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                }
-            );
+            await api.patch(`update-time/${id}`, { time: newTime });
             getItems();
             // After updating priority, fetch the updated list of items
         } catch (error) {

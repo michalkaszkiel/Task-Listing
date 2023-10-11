@@ -1,5 +1,3 @@
-import { Login } from "./Login.jsx";
-import { Register } from "./Register.jsx";
 import { Link } from "react-router-dom";
 export const SignInUp = () => {
     return (

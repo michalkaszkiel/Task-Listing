@@ -834,6 +834,11 @@ i {
         margin-left: -225px;
         margin-top: 55px;
     }
+    .Done-Icons {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+    }
     /*Sign-In-Up*/
     .Sign-In-Up-Conatiner {
         width: 100vw;
@@ -1364,6 +1369,11 @@ i {
         max-width: 220px;
         margin-left: -110px;
         margin-top: 52px;
+    }
+    .Done-Icons {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
     }
     /*Sign-In-Up*/
     .Sign-In-Up-Conatiner {

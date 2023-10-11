@@ -60,10 +60,8 @@ export const authenticateUser = async (req, res, next) => {
                 .status(StatusCodes.UNAUTHORIZED)
                 .json({ message: "Auth failed" });
         }
-
         // Attach the user object to the request for further use in route handlers
         req.user = user;
-
         next();
     } catch (error) {
         return res

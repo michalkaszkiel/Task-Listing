@@ -17,14 +17,14 @@ import {
 } from "../middleware/validator.js";
 
 const router = express.Router();
-
-router.get("/get-items", authenticateUser, GetItems);
 router.post("/create-user", validator, validateFullUserRules, createUser);
-router.post("/create-task", authenticateUser, CreateTask);
-router.post("/login", loginUser);
-router.patch("/update-rating/:id", authenticateUser, UpdateRating);
-router.patch("/update-completed/:id", authenticateUser, UpdateCompleted);
-router.delete("/delete/:id", authenticateUser, deleteTask);
-router.patch("/update-time/:id", authenticateUser, UpdateTime);
 router.post("/logout", logOutUser);
+router.use(authenticateUser);
+router.get("/get-items", GetItems);
+router.post("/create-task", CreateTask);
+router.post("/login", loginUser);
+router.patch("/update-rating/:id", UpdateRating);
+router.patch("/update-completed/:id", UpdateCompleted);
+router.delete("/delete/:id", deleteTask);
+router.patch("/update-time/:id", UpdateTime);
 export default router;

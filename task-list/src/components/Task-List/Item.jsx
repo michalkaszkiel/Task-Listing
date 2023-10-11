@@ -12,7 +12,7 @@ export const Item = React.memo(
     }) => {
         const handleUpdateChange = (newRating) => {
             handleUpdateRating(item._id, newRating);
-            console.log(item._id, newRating);
+            // console.log(item._id, newRating);
         };
 
         return (
