@@ -44,7 +44,7 @@ export const Form = ({
             // Remove the JWT token from local storage
 
             if (logOut.status === 200) {
-                logOut();
+                logout();
                 navigate("/Login");
             }
         } catch (e) {
