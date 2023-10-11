@@ -19,10 +19,10 @@ import {
 const router = express.Router();
 router.post("/create-user", validator, validateFullUserRules, createUser);
 router.post("/logout", logOutUser);
+router.post("/login", loginUser);
 router.use(authenticateUser);
 router.get("/get-items", GetItems);
 router.post("/create-task", CreateTask);
-router.post("/login", loginUser);
 router.patch("/update-rating/:id", UpdateRating);
 router.patch("/update-completed/:id", UpdateCompleted);
 router.delete("/delete/:id", deleteTask);
