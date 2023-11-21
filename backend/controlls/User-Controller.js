@@ -94,7 +94,7 @@ export const loginUser = async (req, res) => {
     }
 };
 
-export const logOutUser = (req, res) => {
+export const logOutUser = async (req, res) => {
     try {
         res.status(StatusCodes.OK).json({ message: "Logged out" });
     } catch (err) {

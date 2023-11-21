@@ -1,9 +1,16 @@
 import React from "react";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 import { useCookie } from "../context/CookieContext.jsx";
 
 export const CookiesAlert = () => {
     const { acceptCookie, declineCookie } = useCookie();
+    const hideCookiesAlert = () => {
+        // Hide the cookies alert
+        const cookiesAlert = document.querySelector(".cookies-alert");
+        if (cookiesAlert) {
+            cookiesAlert.style.display = "none";
+        }
+    };
     const handleAccept = () => {
         acceptCookie();
         hideCookiesAlert();
@@ -12,14 +19,6 @@ export const CookiesAlert = () => {
     const handleDecline = () => {
         declineCookie();
         hideCookiesAlert();
-    };
-
-    const hideCookiesAlert = () => {
-        // Hide the cookies alert
-        const cookiesAlert = document.querySelector(".cookies-alert");
-        if (cookiesAlert) {
-            cookiesAlert.style.display = "none";
-        }
     };
 
     return (
