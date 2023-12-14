@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Fade } from "react-reveal";
 import MyCalendar from "./MyCalendar";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import apiInstance from "../../utils/axiosInstance.js";
 import { useAuth } from "../../context/AuthContext.jsx";
 import Cookies from "js-cookie";
 import jwt_decode from "jwt-decode";
@@ -14,6 +14,7 @@ export const Form = ({
     setSelectedDate,
     handleDateChange,
 }) => {
+    const inst = apiInstance();
     const { isLoggedIn, logout } = useAuth();
     const navigate = useNavigate();
     const [showSecondHeader, setShowSecondHeader] = useState(false);
@@ -38,9 +39,7 @@ export const Form = ({
 
     const handleLogOut = async () => {
         try {
-            const logOut = await axios.post(
-                "https://task-list-crud2.onrender.com/api/task-list/logout"
-            );
+            const logOut = await inst.post("/api/task-list/logout");
             // Remove the JWT token from local storage
 
             if (logOut.status === 200) {

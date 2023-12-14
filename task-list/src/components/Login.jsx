@@ -1,11 +1,12 @@
 import { useState } from "react";
-import axios from "axios";
+
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
 import { useCookie } from "../context/CookieContext.jsx";
 import Cookies from "js-cookie";
-
+import apiInstance from "../utils/axiosInstance.js";
 export const Login = () => {
+    const inst = apiInstance();
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [loading, setLoading] = useState(false);
@@ -19,14 +20,11 @@ export const Login = () => {
         e.preventDefault();
         try {
             setLoading(true);
-            const response = await axios.post(
-                "https://task-list-crud2.onrender.com/api/task-list/login",
-                {
-                    email: email,
-                    password: password,
-                    rememberMe: rememberMe,
-                }
-            );
+            const response = await inst.post("/api/task-list/login", {
+                email: email,
+                password: password,
+                rememberMe: rememberMe,
+            });
 
             if (response.status === 200) {
                 // Login successful, store the token and navigate to the List

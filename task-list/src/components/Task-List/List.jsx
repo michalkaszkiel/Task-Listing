@@ -6,7 +6,7 @@ import React from "react";
 import { useAuth } from "../../context/AuthContext.jsx";
 import { useCookie } from "../../context/CookieContext.jsx";
 import Cookies from "js-cookie";
-import createApiInstance from "../../util/axiosInstance.js";
+import apiInstance from "../../utils/axiosInstance.js";
 export const List = () => {
     const [showCompleted, setShowCompleted] = useState(false);
     const [items, setItems] = useState([]);
@@ -20,7 +20,7 @@ export const List = () => {
     const token = cookie
         ? Cookies.get("jwtToken")
         : localStorage.getItem("jwtToken");
-    const api = createApiInstance(token);
+    const api = apiInstance(token);
 
     useEffect(() => {
         getItems();

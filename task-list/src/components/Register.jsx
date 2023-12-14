@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import regImg from "../images/Register-IMG.jpeg";
 import { useState } from "react";
-import axios from "axios";
+import apiInstance from "../utils/axiosInstance.js";
 
 export const Register = () => {
+    const inst = apiInstance();
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [userEmail, setUserEmail] = useState("");
@@ -13,14 +14,11 @@ export const Register = () => {
         e.preventDefault();
         try {
             setLoading(true);
-            const response = await axios.post(
-                "https://task-list-crud2.onrender.com/api/task-list/create-user",
-                {
-                    userName: userName,
-                    email: userEmail,
-                    password: password,
-                }
-            );
+            const response = await inst.post("/api/task-list/create-user", {
+                userName: userName,
+                email: userEmail,
+                password: password,
+            });
             if (response.status === 201) {
                 setIsRegistered(true);
                 setLoading(false);
