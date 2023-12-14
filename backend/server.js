@@ -51,6 +51,6 @@ app.all("*", (req, res) => {
 app.listen(port, () => {
     console.log(`The server is listening 🐒 on port ${port}`);
 });
-app.get("/", (req, res) => {
+app.get("/check", (req, res) => {
     res.send("Server is awake!");
 });
