@@ -39,7 +39,7 @@ export const Form = ({
 
     const handleLogOut = async () => {
         try {
-            const logOut = await inst.post("/api/task-list/logout");
+            const logOut = await inst.post("/logout");
             // Remove the JWT token from local storage
 
             if (logOut.status === 200) {

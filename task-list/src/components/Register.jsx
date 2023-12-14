@@ -14,7 +14,7 @@ export const Register = () => {
         e.preventDefault();
         try {
             setLoading(true);
-            const response = await inst.post("/api/task-list/create-user", {
+            const response = await inst.post("/create-user", {
                 userName: userName,
                 email: userEmail,
                 password: password,

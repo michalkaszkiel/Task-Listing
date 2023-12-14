@@ -20,7 +20,7 @@ export const Login = () => {
         e.preventDefault();
         try {
             setLoading(true);
-            const response = await inst.post("/api/task-list/login", {
+            const response = await inst.post("/login", {
                 email: email,
                 password: password,
                 rememberMe: rememberMe,

@@ -29,7 +29,7 @@ mongoose
     });
 // Serve static files from the 'build' directory
 const corsOptions = {
-    origin: "*", //allow all origins * = wildcard
+    origin: "*",
     methods: ["HEAD", "GET", "POST", "PATCH", "DELETE"],
     credentials: true, //allow cookies to be sent with requests
 };
