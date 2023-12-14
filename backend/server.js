@@ -27,32 +27,30 @@ mongoose
         console.log(error.message);
         console.log("🤨");
     });
-
 // Serve static files from the 'build' directory
 const corsOptions = {
-    origin: "*", // Allow all origins * = wildcard
+    origin: "*", //allow all origins * = wildcard
     methods: ["HEAD", "GET", "POST", "PATCH", "DELETE"],
-    credentials: true, // Allow cookies to be sent with requests
+    credentials: true, //allow cookies to be sent with requests
 };
 app.use(express.json());
 app.use(cors(corsOptions));
 app.use("/api/task-list", router);
+app.use(express.static(path.join(__dirname, "build")));
+
+// Handle all routes and serve the index.html file
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 // Handle invalid paths with a 500 status
 app.all("*", (req, res) => {
     res.status(500).send("Invalid path");
 });
 
-// Serve the index.html file for all routes (should be at the end)
-app.use(express.static(path.join(__dirname, "build")));
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "build", "index.html"));
-});
-
 app.listen(port, () => {
     console.log(`The server is listening 🐒 on port ${port}`);
 });
-
 app.get("/check", (req, res) => {
     res.send("Server is awake!");
 });
