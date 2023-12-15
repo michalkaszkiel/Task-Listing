@@ -14,12 +14,11 @@ export const List = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [perPage, setPerPage] = useState(5);
     const { isLoggedIn } = useAuth();
-    const { cookie } = useCookie();
+
     const toDo = items.filter((item) => !item.completed);
     const done = items.filter((item) => item.completed);
-    const token = cookie
-        ? Cookies.get("jwtToken")
-        : localStorage.getItem("jwtToken");
+    const token = Cookies.get("jwtToken");
+
     const api = apiInstance(token);
 
     useEffect(() => {
