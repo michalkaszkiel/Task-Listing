@@ -4,16 +4,17 @@ import cors from "cors";
 import mongoose from "mongoose";
 import router from "./routes/router.js";
 import cookieParser from "cookie-parser";
-
+import { __dirname } from "./global.js";
 const app = express();
 dotenv.config();
 app.use(cookieParser());
 app.use(express.json());
 const port = process.env.PORT || 10000;
 const corsOptions = {
-    origin: "*", //allow all origins * = wildcard
+    origin: "*",
     methods: ["HEAD", "GET", "POST", "PATCH", "DELETE"],
-    credentials: true, //allow cookies to be sent with requests
+    credentials: true,
+    optionSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
 
@@ -40,3 +41,4 @@ app.get("/check", (req, res) => {
     res.send("Server is awake!");
 });
 app.use("/api/task-list", router);
+app.use(express.static(path.join(__dirname, "build")));

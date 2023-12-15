@@ -49,7 +49,7 @@ export const validator = (req, res, next) => {
 export const authenticateUser = async (req, res, next) => {
     try {
         const token = req.headers.authorization.split(" ")[1];
-        const decodedToken = jwt.verify(token, "verySecret");
+        const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
 
         // Fetch the user from the database based on the decoded user information
         const user = await User.findOne({ userName: decodedToken.name });

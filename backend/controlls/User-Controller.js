@@ -70,9 +70,13 @@ export const loginUser = async (req, res) => {
             // passwords are matching
             // Create a JSON Web Token (JWT)
             const rememberMe = req.body.rememberMe ? "30d" : "3m";
-            const token = jwt.sign({ name: user.userName }, "verySecret", {
-                expiresIn: rememberMe,
-            });
+            const token = jwt.sign(
+                { name: user.userName },
+                process.env.JWT_SECRET,
+                {
+                    expiresIn: rememberMe,
+                }
+            );
 
             // Store the token in both cookies and local storage
             res.status(StatusCodes.OK)
