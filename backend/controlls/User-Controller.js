@@ -77,16 +77,12 @@ export const loginUser = async (req, res) => {
                     expiresIn: rememberMe,
                 }
             );
-
-            // Store the token in both cookies and local storage
             res.status(StatusCodes.OK)
                 .cookie("jwtToken", token, { httpOnly: true, secure: true })
                 .json({ token });
-
-            // Store the token in local storage as well
-            localStorage.setItem("jwtToken", token);
         } else {
             // passwords are not matching
+            console.log("failure");
             return res
                 .status(StatusCodes.UNAUTHORIZED)
                 .json({ message: "Combination email/password does not exist" });

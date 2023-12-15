@@ -1,25 +1,21 @@
 import { useState } from "react";
-
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
-import { useCookie } from "../context/CookieContext.jsx";
 import Cookies from "js-cookie";
 import axios from "axios";
 export const Login = () => {
-
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [loading, setLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-    const { login } = useAuth(); // Get the login function and rememberMe setter from the context
-    const { cookie } = useCookie();
+    const { login } = useAuth();
+
     const [rememberMe, setRememberMe] = useState(false);
     const handleLogIn = async (e) => {
         e.preventDefault();
         try {
-
             const response = await axios.post(
                 "https://task-list-vk02.onrender.com/api/task-list/login",
                 {
@@ -29,21 +25,12 @@ export const Login = () => {
                 }
             );
 
-
             if (response.status === 200) {
-                // Login successful, store the token and navigate to the List
                 const token = response.data.token;
-                if (cookie === false) {
-                    localStorage.setItem("jwtToken", token);
-                } else {
-                    Cookies.set("jwtToken", token);
-                }
-                // Call the login function from the context and set rememberMe state
+                Cookies.set("jwtToken", token);
                 login();
-
                 navigate("/List");
             } else {
-                // Handle other response statuses if needed
                 setError("Login failed");
             }
         } catch (err) {
