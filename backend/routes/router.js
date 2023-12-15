@@ -17,12 +17,12 @@ import {
 } from "../middleware/validator.js";
 
 const router = express.Router();
-router.post("/create-user", validator, validateFullUserRules, createUser);
-router.post("/logout", logOutUser);
-router.post("/login", loginUser);
 router.get("/check", (req, res) => {
     res.send("Server is awake!");
 });
+router.post("/create-user", validator, validateFullUserRules, createUser);
+router.post("/login", loginUser);
+router.post("/logout", logOutUser);
 router.use(authenticateUser);
 router.get("/get-items", GetItems);
 router.post("/create-task", CreateTask);

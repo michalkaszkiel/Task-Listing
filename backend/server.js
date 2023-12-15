@@ -45,6 +45,3 @@ app.get("*", (req, res) => {
 });
 
 // Handle invalid paths with a 500 status
-app.all("*", (req, res) => {
-    res.status(500).send("Invalid path");
-});
