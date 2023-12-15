@@ -3,8 +3,10 @@ import { Fade } from "react-reveal";
 import { Link } from "react-router-dom";
 import { Footer } from "./Footer.jsx";
 import { CookiesAlert } from "./CookiesAlert.jsx";
-
+import { useAuth } from "../context/AuthContext.jsx";
 export const LandingPage = () => {
+    const { isLoggedIn } = useAuth();
+    const goToList = isLoggedIn ? "/List" : "/SignInUp";
     const listed = list;
     return (
         <>
@@ -23,7 +25,7 @@ export const LandingPage = () => {
                             </p>
                         </div>
                         <div className="Landing-Page-Image-Cont">
-                            <Link to="/SignInUp" className="link">
+                            <Link to={goToList} className="link">
                                 <img
                                     alt="list"
                                     src={listed}
