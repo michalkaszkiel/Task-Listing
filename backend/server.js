@@ -8,14 +8,16 @@ import cookieParser from "cookie-parser";
 const app = express();
 dotenv.config();
 app.use(cookieParser());
-app.use(express.json());
-const port = process.env.PORT || 10000;
-const corsOptions = {
-    origin: "*",
-    methods: ["HEAD", "GET", "POST", "PATCH", "DELETE"],
-    credentials: true,
-};
-app.use(cors(corsOptions));
+app.use(express.json()); // Apply express.json() middleware first
+const port = process.env.PORT || 3000;
+app.use(
+    cors({
+        origin: "*", // Allow all origins * = wildcard
+        methods: ["HEAD", "GET", "POST", "PATCH", "DELETE"],
+        credentials: true,
+    })
+);
+app.use("/api/task-list", router);
 
 mongoose
     .connect(
@@ -35,5 +37,3 @@ mongoose
         console.log(error.message);
         console.log("🤨");
     });
-
-app.use("/api/task-list", router);
