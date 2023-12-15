@@ -20,6 +20,9 @@ const router = express.Router();
 router.post("/create-user", validator, validateFullUserRules, createUser);
 router.post("/logout", logOutUser);
 router.post("/login", loginUser);
+router.get("/check", (req, res) => {
+    res.send("Server is awake!");
+});
 router.use(authenticateUser);
 router.get("/get-items", GetItems);
 router.post("/create-task", CreateTask);
