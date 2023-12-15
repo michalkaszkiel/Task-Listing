@@ -69,7 +69,7 @@ export const loginUser = async (req, res) => {
         if (checkPassword) {
             // passwords are matching
             // Create a JSON Web Token (JWT)
-            const rememberMe = req.body.rememberMe ? "30d" : "3m";
+            const rememberMe = req.body.rememberMe ? "30d" : "1m";
             const token = jwt.sign(
                 { name: user.userName },
                 process.env.JWT_SECRET,
@@ -96,6 +96,7 @@ export const loginUser = async (req, res) => {
 
 export const logOutUser = async (req, res) => {
     try {
+        res.clearCookie("jwtToken", { httpOnly: true, secure: true });
         res.status(StatusCodes.OK).json({ message: "Logged out" });
     } catch (err) {
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: err });

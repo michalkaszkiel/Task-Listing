@@ -4,7 +4,6 @@ import { useState } from "react";
 import axios from "axios";
 
 export const Register = () => {
-
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [userEmail, setUserEmail] = useState("");
@@ -13,7 +12,7 @@ export const Register = () => {
     const handleRegister = async (e) => {
         e.preventDefault();
         try {
-
+            setLoading(true);
             const response = await axios.post(
                 "https://task-list-vk02.onrender.com/api/task-list/create-user",
                 {

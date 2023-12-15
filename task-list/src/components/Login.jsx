@@ -10,12 +10,14 @@ export const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+
     const { login } = useAuth();
 
     const [rememberMe, setRememberMe] = useState(false);
     const handleLogIn = async (e) => {
         e.preventDefault();
         try {
+            setLoading(true);
             const response = await axios.post(
                 "https://task-list-vk02.onrender.com/api/task-list/login",
                 {
