@@ -18,7 +18,7 @@ import {
 
 const router = express.Router();
 router.get("/check", (req, res) => {
-    res.send("Server is awake!");
+    res.send({ message: "Server is awake!" });
 });
 router.post("/create-user", validator, validateFullUserRules, createUser);
 router.post("/login", loginUser);
