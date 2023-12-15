@@ -10,7 +10,7 @@ import path from "path"; // Import path module
 const app = express();
 dotenv.config();
 app.use(cookieParser());
-const port = process.env.PORT || 10000;
+const port = process.env.PORT || 3000;
 
 mongoose
     .connect(
