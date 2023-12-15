@@ -4,7 +4,8 @@ import cors from "cors";
 import mongoose from "mongoose";
 import router from "./routes/router.js";
 import cookieParser from "cookie-parser";
-
+import { __dirname } from "./global.js"; // Import __dirname from global.js
+import path from "path"; // Import path module
 const app = express();
 dotenv.config();
 app.use(cookieParser());
@@ -37,3 +38,13 @@ mongoose
         console.log(error.message);
         console.log("🤨");
     });
+app.use(express.static(path.join(__dirname, "build")));
+// Handle all routes and serve the index.html file
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "build", "index.html"));
+});
+
+// Handle invalid paths with a 500 status
+app.all("*", (req, res) => {
+    res.status(500).send("Invalid path");
+});
