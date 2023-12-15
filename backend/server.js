@@ -9,16 +9,8 @@ import path from "path"; // Import path module
 const app = express();
 dotenv.config();
 app.use(cookieParser());
-app.use(express.json()); // Apply express.json() middleware first
+
 const port = process.env.PORT || 3000;
-app.use(
-    cors({
-        origin: "*", // Allow all origins * = wildcard
-        methods: ["HEAD", "GET", "POST", "PATCH", "DELETE"],
-        credentials: true,
-    })
-);
-app.use("/api/task-list", router);
 
 mongoose
     .connect(

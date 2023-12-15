@@ -4,9 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
 import { useCookie } from "../context/CookieContext.jsx";
 import Cookies from "js-cookie";
-import apiInstance from "../utils/axiosInstance.js";
+import axios from "axios";
 export const Login = () => {
-    const inst = apiInstance();
+
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [loading, setLoading] = useState(false);
@@ -19,12 +19,16 @@ export const Login = () => {
     const handleLogIn = async (e) => {
         e.preventDefault();
         try {
-            setLoading(true);
-            const response = await inst.post("/login", {
-                email: email,
-                password: password,
-                rememberMe: rememberMe,
-            });
+
+            const response = await axios.post(
+                "https://task-list-vk02.onrender.com/api/task-list/login",
+                {
+                    email: email,
+                    password: password,
+                    rememberMe: rememberMe,
+                }
+            );
+
 
             if (response.status === 200) {
                 // Login successful, store the token and navigate to the List
