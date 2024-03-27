@@ -14,7 +14,7 @@ export const Register = () => {
         try {
             setLoading(true);
             const response = await axios.post(
-                "https://task-list-vk02.onrender.com/api/task-list/create-user",
+                "https://task-listing.onrender.com/api/task-list/create-user",
                 {
                     userName: userName,
                     email: userEmail,

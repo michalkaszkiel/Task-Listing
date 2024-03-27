@@ -1119,6 +1119,7 @@ i {
     .Sub-List-Main {
         width: 90%; /* ch */
         height: 90%; /* ch */
+        transition: transform 0.3s;
     }
     .MainOff {
         width: 95%;

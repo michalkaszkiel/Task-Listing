@@ -7,6 +7,7 @@ import { useAuth } from "../../context/AuthContext.jsx";
 import { useCookie } from "../../context/CookieContext.jsx";
 import Cookies from "js-cookie";
 import apiInstance from "../../utils/axiosInstance.js";
+import { Fade } from "react-reveal";
 export const List = () => {
     const [showCompleted, setShowCompleted] = useState(false);
     const [items, setItems] = useState([]);
@@ -191,6 +192,7 @@ export const List = () => {
                         handleTimeChanged={handleTimeChanged}
                     />
                 )}
+
                 <Undone
                     toDo={toDo}
                     handleUndone={handleUndoneItems}

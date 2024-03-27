@@ -40,7 +40,7 @@ export const Form = ({
     const handleLogOut = async () => {
         try {
             const logOut = await axios.post(
-                "https://task-list-vk02.onrender.com/api/task-list/logout"
+                "https://task-listing.onrender.com/api/task-list/logout"
             );
             Cookies.remove("jwtToken");
             if (logOut.status === 200) {
