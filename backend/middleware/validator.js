@@ -50,7 +50,7 @@ export const authenticateUser = async (req, res, next) => {
     try {
         const token = req.headers.authorization.split(" ")[1];
         const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-        console.log(`token: ${token}, decoded token: ${decodedToken}`);
+        // console.log(`token: ${token}, decoded token: ${decodedToken}`);
         // Fetch the user from the database based on the decoded user information
         const user = await User.findOne({ userName: decodedToken.name });
         console.log(`user: ${user}`);
