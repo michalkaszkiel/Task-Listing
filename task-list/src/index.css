@@ -51,7 +51,7 @@ body {
     display: grid;
     grid-template-columns: repeat(10, 10%);
     grid-template-rows: repeat(10, 10%);
-    background-image: url(./images/items-to-pack.jpeg);
+    background-image: url("https://res.cloudinary.com/dx9rdmmff/image/upload/v1713704930/Task-List/fmopfurtlj9wyhpcehex.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -127,7 +127,7 @@ div.Landing-text .never-forget::after {
 .List-Main {
     width: 100vw;
     height: 100vh;
-    background-image: url(./images/background-listing.jpeg);
+    background-image: url("https://res.cloudinary.com/dx9rdmmff/image/upload/v1713704918/Task-List/zg54kcta4cwfhde7zei6.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -352,7 +352,7 @@ form {
     display: grid;
     grid-template-columns: repeat(10, 10%);
     grid-template-rows: repeat(10, 10%);
-    background-image: url(./images/loginpage.jpeg);
+    background-image: url("https://res.cloudinary.com/dx9rdmmff/image/upload/v1713704918/Task-List/byjkuhoxr6bmbsi1t2ux.jpg");
     background-position: left center;
     background-size: 36vw;
     background-repeat: no-repeat;
@@ -388,7 +388,7 @@ form {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-image: url(./images/people.jpeg);
+    background-image: url("https://res.cloudinary.com/dx9rdmmff/image/upload/v1713704920/Task-List/nr1eddslq7c1uxikazwu.jpg");
     background-position: center;
     background-size: 100vh;
     background-repeat: no-repeat;
@@ -420,7 +420,7 @@ form {
 .Login-Welcome-Container {
     width: 700px;
     height: 500px;
-    background-image: url(./images/PeopleWelcome2.jpeg);
+    background-image: url("https://res.cloudinary.com/dx9rdmmff/image/upload/v1713704921/Task-List/jhzzknok3pkg6z9iqdsx.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -430,7 +430,7 @@ form {
 .Login-Container {
     width: 30vw;
     height: 50vh;
-    background-image: url(./images/peopleLogin.png);
+    background-image: url("https://res.cloudinary.com/dx9rdmmff/image/upload/v1713704919/Task-List/jjarzcq247utulosz6yz.png");
     background-position: bottom center;
     background-size: 12vw;
     background-repeat: no-repeat;
@@ -678,7 +678,6 @@ i {
         display: grid;
         grid-template-columns: repeat(10, 10%);
         grid-template-rows: repeat(10, 10%);
-        background-image: url(./images/loginpage.jpeg);
         background-position: left center;
         background-size: 36vw;
         background-repeat: no-repeat;
@@ -890,7 +889,7 @@ i {
         display: grid;
         grid-template-columns: repeat(10, 10%);
         grid-template-rows: repeat(10, 10%);
-        background-image: url(./images/loginpage.jpeg);
+        background-image: url("https://res.cloudinary.com/dx9rdmmff/image/upload/v1713704918/Task-List/byjkuhoxr6bmbsi1t2ux.jpg");
         background-position: left top;
         background-size: 40vw;
         background-repeat: no-repeat;
@@ -925,7 +924,7 @@ i {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-image: url(./images/peopleSmaller.png);
+        background-image: url("https://res.cloudinary.com/dx9rdmmff/image/upload/v1713704919/Task-List/ikmso8wlnoaoyzwdisjl.png");
         background-position: center;
         background-size: 40vh;
     }
@@ -972,7 +971,6 @@ i {
     .Login-Container {
         width: 100vw;
         height: 40vh;
-        background-image: url(./images/peopleLogin.png);
         background-position: center top 27vh;
         background-size: 60vw;
     }
@@ -1175,7 +1173,6 @@ i {
         display: grid;
         grid-template-columns: repeat(10, 10%);
         grid-template-rows: repeat(10, 10%);
-        background-image: url(./images/loginpage.jpeg);
         background-position: left center;
         background-size: 36vw;
         background-repeat: no-repeat;
@@ -1204,7 +1201,6 @@ i {
         grid-area: 5/5/11/11;
         justify-content: space-evenly;
         flex-direction: row;
-        background-image: url(./images/people.jpeg);
         background-position: center;
         background-size: 100vh;
         background-repeat: no-repeat;
@@ -1237,7 +1233,6 @@ i {
     .Login-Container {
         width: 100vw;
         height: 40vh;
-        background-image: url(./images/peopleLogin.png);
         background-position: bottom center;
         background-size: 40vw;
     }
@@ -1427,7 +1422,6 @@ i {
         display: grid;
         grid-template-columns: repeat(10, 10%);
         grid-template-rows: repeat(10, 10%);
-        background-image: url(./images/loginpage.jpeg);
         background-position: left top;
         background-size: 47vw;
         background-repeat: no-repeat;
@@ -1462,7 +1456,6 @@ i {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-image: url(./images/peopleSmaller.png);
         background-position: center;
         background-size: 40vh;
     }
@@ -1519,7 +1512,6 @@ i {
     .Login-Container {
         width: 100vw;
         height: 45vh;
-        background-image: url(./images/peopleLogin.png);
         background-position: center bottom;
         background-size: 35vw;
     }
@@ -1682,7 +1674,6 @@ i {
         display: grid;
         grid-template-columns: repeat(10, 10%);
         grid-template-rows: repeat(10, 10%);
-        background-image: url(./images/loginpage.jpeg);
         background-position: left top;
         background-size: 45vw;
         background-repeat: no-repeat;
@@ -1717,7 +1708,6 @@ i {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-image: url(./images/peopleSmaller.png);
         background-position: center;
         background-size: 40vh;
     }
