@@ -19,12 +19,27 @@ export const Form = ({
     const navigate = useNavigate();
     const [showSecondHeader, setShowSecondHeader] = useState(false);
     const [showCalendar, setShowCalendar] = useState(false);
+
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (
+                calendarRef.current &&
+                !calendarRef.current.contains(e.target)
+            ) {
+                setShowCalendar(false);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        return () =>
+            document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
+
     const handleChange = (e) => {
         setInputName(e.target.value);
     };
 
     const handleShowCalendar = () => {
-        setShowCalendar(!showCalendar);
+        setShowCalendar(true);
     };
 
     const calendarRef = useRef(null);
@@ -77,12 +92,14 @@ export const Form = ({
             <div className="Form-Container">
                 {!showSecondHeader && (
                     <Fade duration={2000} delay={500}>
-                        <h1>Welcome to your task list.</h1>
+                        <h1 className="list-header">
+                            Welcome to your task list.
+                        </h1>
                     </Fade>
                 )}
                 {showSecondHeader && (
                     <Fade duration={2000}>
-                        <h1>Let's plan something...</h1>
+                        <h1 className="list-header">Let's plan something...</h1>
                     </Fade>
                 )}
 
@@ -93,7 +110,7 @@ export const Form = ({
                         ref={calendarRef}
                     ></i>
 
-                    <div className="Calendar">
+                    <div className="Calendar" ref={calendarRef}>
                         {showCalendar && (
                             <MyCalendar
                                 selectedDate={selectedDate}

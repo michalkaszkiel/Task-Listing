@@ -713,7 +713,7 @@ i {
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        background-image: url(./images/people.jpeg);
+        /* background-image: url("https://res.cloudinary.com/dx9rdmmff/image/upload/v1713704919/Task-List/ikmso8wlnoaoyzwdisjl.png"); */
         background-position: center;
         background-size: 100vh;
         background-repeat: no-repeat;
@@ -752,7 +752,8 @@ i {
         flex-direction: row;
     }
 }
-
+@media (min-width: 768px) {
+}
 /* Tablets in portrait mode */
 @media (min-width: 768px) and (max-width: 1023px) and (max-height: 1366px) {
     .cookies-alert {
@@ -794,7 +795,7 @@ i {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        grid-area: 2/4/6/8;
+        grid-area: 2/4/7/8;
         padding: 1rem;
     }
     .Landing-Page-Image-Cont {
@@ -825,6 +826,10 @@ i {
     .Sub-List-Main {
         width: 80%;
         height: 80%;
+        background: none;
+        box-shadow: none;
+        backdrop-filter: none;
+        border: none;
     }
     .MainOff {
         width: 95%;
@@ -848,11 +853,11 @@ i {
         padding: 2vh;
     }
     .Undone-Container {
-        grid-area: 3/2/10/10;
+        grid-area: 3/1/10/11;
         width: 100%;
         height: 100%;
         padding: 2vh;
-        margin-top: 2vh;
+        margin-top: 3vh;
     }
     .Both-Containers {
         grid-area: 3/1/7/11;
@@ -1289,6 +1294,195 @@ i {
         border-radius: 12% 88% 67% 33% / 84% 29% 71% 16%;
     }
 }
+@media (max-width: 768px) {
+    /* List */
+    .List-Main {
+        width: 100vw;
+        height: 100vh;
+    }
+    .Sub-List-Main {
+        width: 95%;
+        height: 95%;
+    }
+    .MainOff {
+        width: 95%;
+        height: 95%;
+    }
+    .Form-Container {
+        grid-area: 1/4/3/8;
+    }
+    .Form-Container > h1 {
+        margin-bottom: 2vh;
+    }
+    .Form-Container > form > input {
+        width: 30vw;
+        height: 5vh;
+    }
+    .Done-Container {
+        grid-area: 7/1/11/11;
+        width: 100%;
+        height: 95%;
+        padding: 2vh;
+    }
+    .Undone-Container {
+        grid-area: 3/1/10/11;
+        width: 100%;
+        height: 100%;
+        padding: 2vh;
+        margin-top: 2vh;
+    }
+    .Undone-Container > .fa-clipboard-check {
+        font-size: small !important;
+    }
+    .Both-Containers {
+        grid-area: 3/1/7/11;
+        padding: 2vh;
+        width: 100%;
+        height: 95%;
+    }
+    .calendar-container {
+        position: absolute;
+        max-width: 220px;
+        margin-left: -110px;
+        margin-top: 52px;
+    }
+    .Done-Icons {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+    }
+    .User-Login {
+        grid-area: 2/9/3/11;
+        font-size: smaller;
+        width: 100%;
+        height: 5vh;
+        flex-direction: column;
+    }
+    .Login {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100vw;
+        height: 100vh;
+        background-color: #8cdfff;
+        border: white 2px double;
+        border-radius: 0;
+    }
+    .Login-Welcome-Container {
+        width: 90vw;
+        height: 40vh;
+    }
+    .Login-Welcome-text {
+        text-shadow: 2px 0px 2px #ffffff, 0px 2px 2px #ffffff,
+            4px 2px 2px #ffffff, 2px 4px 2px #ffffff, 6px 4px 2px #ffffff,
+            4px 6px 2px #ffffff, 8px 6px 2px #ffffff, 6px 8px 2px #ffffff,
+            10px 8px 2px #ffffff, 8px 10px 2px #ffffff, 12px 10px 2px #ffffff,
+            10px 12px 2px #ffffff, 14px 12px 2px #ffffff;
+    }
+    .Login-Container {
+        width: 100vw;
+        height: 45vh;
+        background-position: center bottom;
+        background-size: 35vw;
+    }
+
+    .Login-Welcome-text {
+        font-weight: bold;
+        font-size: 2vh;
+    }
+
+    .Login-Section > button {
+        width: 30vw;
+    }
+    .User-Login {
+        grid-area: 2/9/3/11;
+        font-size: smaller;
+        width: 100%;
+        height: 5vh;
+        flex-direction: column;
+    }
+    /*Register */
+    .Register {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        background-color: #8cdfff;
+        border-radius: 0;
+        border: 3px white double;
+    }
+    .Register-Container {
+        display: flex;
+        flex-direction: column-reverse;
+        width: 70vw;
+        height: 60vh;
+        background-color: white;
+        border-radius: 5%;
+        border: 3px #8cdfff double;
+    }
+    .Register-Form {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .Register-Text {
+        padding: 2vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .Register-Image {
+        width: 50vw;
+        border-radius: 12% 88% 67% 33% / 84% 29% 71% 16%;
+    }
+    .Register-Successful {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 85vw;
+        height: 40vh;
+        background-color: white;
+        border-radius: 12% 88% 67% 33% / 84% 29% 71% 16%;
+    }
+    .cookies-alert {
+        grid-area: 8/2/10/10;
+    }
+
+    div.Landing-text {
+        grid-area: 2/3/8/9;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .Landing-Page-Image-Cont {
+        width: 100%;
+        height: 100%;
+    }
+    .Landing-Page-Image {
+        max-width: 25vw;
+        max-height: 25vh;
+    }
+    div.Landing-text h1 {
+        font-size: 5vw;
+        color: #000000;
+    }
+    div.Landing-text .never-forget {
+        font-size: 3.5vw;
+        padding-top: 2vh;
+    }
+    div.Landing-text .never-forget::after {
+        height: 0px;
+    }
+}
 /* Larger smartphones (portrait) */
 @media (max-width: 480px) and (max-height: 960px) {
     .cookies-alert {
@@ -1359,19 +1553,26 @@ i {
     .Sub-List-Main {
         width: 95%;
         height: 95%;
+        background: none;
+        box-shadow: none;
+        backdrop-filter: none;
+        border: none;
     }
     .MainOff {
         width: 95%;
         height: 95%;
     }
     .Form-Container {
-        grid-area: 1/4/3/8;
+        grid-area: 1/2/3/8;
     }
     .Form-Container > h1 {
         margin-bottom: 2vh;
+        font-size: 1.25rem;
+        width: 100%;
+        text-align: center;
     }
     .Form-Container > form > input {
-        width: 30vw;
+        width: 35vw;
         height: 5vh;
     }
     .Done-Container {
@@ -1473,13 +1674,7 @@ i {
         height: 100%;
     }
     .btn1 {
-        width: 60vw;
-        height: 5vh;
-        cursor: pointer;
-        background-color: #fae9ad;
-        border: 1px solid #000000;
-        outline: none;
-        transition: 300ms ease-in-out;
+        width: 50vw !important;
     }
 
     .btn1:hover {
@@ -1512,8 +1707,7 @@ i {
     .Login-Container {
         width: 100vw;
         height: 45vh;
-        background-position: center bottom;
-        background-size: 35vw;
+        background: none;
     }
 
     .Login-Welcome-text {
@@ -1531,6 +1725,11 @@ i {
         height: 5vh;
         flex-direction: column;
     }
+    .Login-label {
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
     /*Register */
     .Register {
         display: flex;

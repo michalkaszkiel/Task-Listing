@@ -14,7 +14,7 @@ export const Footer = () => {
                     <i class="fa-brands fa-linkedin"></i>
                 </a>
                 <a
-                    href="https://github.com/michalkaszkiel"
+                    href="https://github.com/michalkaszkiel11"
                     target="_blank"
                     rel="noopener noreferrer"
                 >

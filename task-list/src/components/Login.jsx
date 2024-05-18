@@ -92,9 +92,6 @@ export const Login = () => {
                             <Link to="/Register">Join Us!</Link>
                         </p>
                         <section className="Login-Section">
-                            <button type="submit" className="btn1">
-                                submit
-                            </button>
                             <label className="Login-label">
                                 <input
                                     type="checkbox"
@@ -106,6 +103,9 @@ export const Login = () => {
                                 <span className="Login-span"></span>
                                 Remember Me
                             </label>
+                            <button type="submit" className="btn1">
+                                submit
+                            </button>
                         </section>
                     </form>
                 )}
